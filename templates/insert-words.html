@@ -1,9 +1,10 @@
     {% extends 'base.html'%} {% block content %}
     
     
-    <input onSubmit=”url_for(insert, {{madLab.id}})”>
-    {% for blank in madLib.descriptors %}
-        {{Blank.name}}: <input>...</input>
-    {% end for %}
+    <input onSubmit=”url_for(insert, {{mad_lib}})”>
+    {% for descriptor in mad_lib.descriptors %}
+        Please type in a {{descriptor}}: <input type="text"></input>
+    {% endfor %}
+    <input type="submit" value="Submit">
 
 {% endblock %}

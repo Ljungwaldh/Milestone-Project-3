@@ -26,6 +26,14 @@ def create():
                            skeletons=mongo.db.mad_libz_templates.find())
 
 
+@app.route('/insert_words')
+def insert_words():
+    selected_id = request.form.get('mad_lib')
+    mad_lib = mongo.db.mad_libz_templates.find_one(
+                    {'_id': ObjectId(selected_id)})
+    return render_template('insert-words.html', mad_lib=mad_lib)
+
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),

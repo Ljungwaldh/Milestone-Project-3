@@ -1,6 +1,6 @@
 {% extends 'base.html'%} {% block content %}
 
-<form action="/">
+<form action="/insert_words">
 <select id="skeleton" name="mad_lib">
                 <option value="" disabled selected>Choose MadLib Theme</option>
                 {% for skeleton in skeletons %}
