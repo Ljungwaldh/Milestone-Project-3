@@ -33,15 +33,24 @@ def insert_words():
                                                   {'_id': ObjectId(selected_id)})
     return render_template('insert-words.html', mad_lib=mad_lib)
 
-        
+
 @app.route('/push_data/<template_id>', methods=['POST'])
 def push_data(template_id):
     user_input = list(request.form.values())
-    mongo.db.mad_libs_input.insert_one({
+    inserted_id = mongo.db.mad_libz_input.insert_one({
         "mad_lib_id": ObjectId(template_id),
         "words": user_input
     })
-    return redirect(url_for('/results'))
+    return redirect(url_for('display_result', inserted_id=inserted_id))
+
+
+@app.route('/display_result/<inserted_id>')
+def display_result(inserted_id):
+    user_input = mongo.db.mad_libz_input.get(
+                                            {'_id': ObjectId(inserted_id)})
+    skeleton = mongo.db.mad_libz_templates.get(
+                                          {'_id': ObjectId(inserted_id)})
+    return render_template('results.html', user_input=user_input, skeleton=skeleton)
 
 
 if __name__ == '__main__':
