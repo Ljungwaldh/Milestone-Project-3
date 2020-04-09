@@ -1,0 +1,12 @@
+{% extends 'base.html'%} {% block content %}
+
+<form action="/insert_words">
+  <input type="radio" id="test1" name="skeleton" value="test1">
+  <label for="test1">Male</label><br>
+  <input type="radio" id="test2" name="skeleton" value="test2">
+  <label for="test1">Female</label><br>
+  <input type="submit" value="Submit">
+</form>
+
+
+{% enblock %}
