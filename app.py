@@ -26,12 +26,22 @@ def create():
                            skeletons=mongo.db.mad_libz_templates.find())
 
 
-@app.route('/insert_words')
+@app.route('/insert_words', methods=['GET'])
 def insert_words():
-    selected_id = request.form.get('mad_lib')
+    selected_id = request.args.get('mad_lib')
     mad_lib = mongo.db.mad_libz_templates.find_one(
-                    {'_id': ObjectId(selected_id)})
+                                                  {'_id': ObjectId(selected_id)})
     return render_template('insert-words.html', mad_lib=mad_lib)
+
+        
+@app.route('/push_data/<template_id>', methods=['POST'])
+def push_data(template_id):
+    user_input = list(request.form.values())
+    mongo.db.mad_libs_input.insert_one({
+        "mad_lib_id": ObjectId(template_id),
+        "words": user_input
+    })
+    return redirect(url_for('/results'))
 
 
 if __name__ == '__main__':

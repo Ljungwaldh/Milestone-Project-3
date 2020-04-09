@@ -1,10 +1,9 @@
     {% extends 'base.html'%} {% block content %}
     
-    
-    <input onSubmit=”url_for(insert, {{mad_lib}})”>
+    <form action="{{ url_for('push_data', template_id=mad_lib._id) }}" method="POST">
     {% for descriptor in mad_lib.descriptors %}
-        Please type in a {{descriptor}}: <input type="text"></input>
+        Please type in a {{descriptor}}: <input type="text" name="{{ loop.index }}"></input>
     {% endfor %}
-    <input type="submit" value="Submit">
+    <button type="submit" value="Submit">
 
 {% endblock %}
