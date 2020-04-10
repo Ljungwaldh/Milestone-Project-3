@@ -89,11 +89,12 @@ def edit(mad_lib_id):
 
 @app.route('/update/<mad_lib_id>', methods=['POST'])
 def update(mad_lib_id):
-    user_input = mongo.db.mad_libz_input
-    user_input.update(
-        {'_id': ObjectId(mad_lib_id)},
-        {'words': request.form.get('loop.index')})
-    return redirect(url_for('create'))
+    user_input = list(request.form.values())
+    mongo.db.mad_libz_input.update_one(
+                                      {'_id': ObjectId(mad_lib_id)},  
+                                      {'$set': {"words": user_input}}
+    )
+    return redirect(url_for('display_all'))
 
 
 @app.route('/delete/<mad_lib_id>')
