@@ -61,8 +61,18 @@ def display_result(inserted_id, skeleton_id):
 
 
 @app.route('/display_all/<mad_libz_id>/<template_id>')
-def display_all():
+def display_all(mad_libz_id):
+    user_inputs = mongo.db.mad_libz_input.find({'_id': ObjectId(mad_libz_id)})
+    for user_input in user_inputs:
+        mongo.db.mad_libz_templates.find_one()
 
+
+
+
+@app.route('/delete/<mad_libz_id>')
+def delete(mad_libz_id):
+    mongo.db.mad_libz_input.remove({'_id': ObjectId(mad_libz_id)})
+    return redirect(url_for('create'))
 
 
 if __name__ == '__main__':
