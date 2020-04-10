@@ -1,8 +1,8 @@
     {% extends 'base.html'%} {% block content %}
     
-    <form action="{{ url_for('update_data', mad_lib_id=mad_lib._id) }}" method="POST">
-    {% for descriptor in mad_lib.descriptors %}
-        Please type in a {{descriptor}}: <input type="text" name="{{ loop.index }}"></input>
+    <form action="{{ url_for('update', mad_lib_id=mad_lib_id) }}" method="POST">
+    {% for descriptor, word in user_prefill %}
+        Please type in a {{descriptor}}: <input type="text" name="{{ loop.index }}" value="{{ word }}"></input>
     {% endfor %}
     <button type="submit" value="Submit">
 

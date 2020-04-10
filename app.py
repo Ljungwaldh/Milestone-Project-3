@@ -77,12 +77,23 @@ def display_all():
 
 @app.route('/edit/<mad_lib_id>')
 def edit(mad_lib_id):
-    print(mad_lib_id)
     user_input = mongo.db.mad_libz_input.find_one(
                                                  {'_id': ObjectId(mad_lib_id)})
     skeleton = mongo.db.mad_libz_templates.find_one(
                                                  {'_id': ObjectId(user_input['mad_lib_id'])})
+    descriptors = skeleton['descriptors']
+    words = user_input['words']
+    user_prefill = zip(descriptors, words)
+    return render_template('edit.html', mad_lib_id=mad_lib_id, user_prefill=user_prefill)
 
+
+@app.route('/update/<mad_lib_id>', methods=['POST'])
+def update(mad_lib_id):
+    user_input = mongo.db.mad_libz_input
+    user_input.update(
+        {'_id': ObjectId(mad_lib_id)},
+        {'words': request.form.get('loop.index')})
+    return redirect(url_for('create'))
 
 
 @app.route('/delete/<mad_lib_id>')
