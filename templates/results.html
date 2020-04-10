@@ -1,6 +1,11 @@
     {% extends 'base.html'%} {% block content %}
 
     <h2>{{ skeleton.title }}</h2>
-    <p></p>
+    <p>{{ result }}</p>
+
+    <a href="{{ url_for('create') }}">Create another</a>
+    <a href="{{ url_for('edit', mad_libz_id=mad_libz_input._id, template_id=mad_libz_template._id) }}">Edit</a>
+    <a href="{{ url_for('delete', mad_libz_id=mad_libz_input._id, template_id=mad_libz_template._id) }}">Delete</a>
+    <a href="{{ url_for('display_all', mad_libz_id=mad_libz_input._id, template_id=mad_libz_template._id) }}">View all Mad Libz</a>
 
     {% endblock %}

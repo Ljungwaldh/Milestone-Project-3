@@ -30,7 +30,8 @@ def create():
 def insert_words():
     selected_id = request.args.get('mad_lib')
     mad_lib = mongo.db.mad_libz_templates.find_one(
-                                                  {'_id': ObjectId(selected_id)})
+                                                  {'_id': ObjectId(selected_id)
+                                                   })
     return render_template('insert-words.html', mad_lib=mad_lib)
 
 
@@ -40,17 +41,28 @@ def push_data(template_id):
     inserted_id = mongo.db.mad_libz_input.insert_one({
         "mad_lib_id": ObjectId(template_id),
         "words": user_input
-    })
-    return redirect(url_for('display_result', inserted_id=inserted_id))
+    }).inserted_id
+    return redirect(url_for('display_result', inserted_id=inserted_id,
+                            skeleton_id=template_id))
 
 
-@app.route('/display_result/<inserted_id>')
-def display_result(inserted_id):
-    user_input = mongo.db.mad_libz_input.get(
+@app.route('/display_result/<inserted_id>/<skeleton_id>')
+def display_result(inserted_id, skeleton_id):
+    user_input = mongo.db.mad_libz_input.find_one(
                                             {'_id': ObjectId(inserted_id)})
-    skeleton = mongo.db.mad_libz_templates.get(
-                                          {'_id': ObjectId(inserted_id)})
-    return render_template('results.html', user_input=user_input, skeleton=skeleton)
+    skeleton = mongo.db.mad_libz_templates.find_one(
+                                          {'_id': ObjectId(skeleton_id)})
+    script = skeleton['script']
+    user_input_words = user_input['words']
+    result = tuple(zip(script, user_input_words))
+    result = " ".join(map(" ".join, result))
+    return render_template('results.html', user_input=user_input,
+                           skeleton=skeleton, result=result)
+
+
+@app.route('/display_all/<mad_libz_id>/<template_id>')
+def display_all():
+
 
 
 if __name__ == '__main__':
