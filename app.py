@@ -75,6 +75,15 @@ def display_all():
     return render_template('library.html', user_inputs=user_inputs)
 
 
+@app.route('/edit/<mad_lib_id>')
+def edit(mad_lib_id):
+    print(mad_lib_id)
+    user_input = mongo.db.mad_libz_input.find_one(
+                                                 {'_id': ObjectId(mad_lib_id)})
+    skeleton = mongo.db.mad_libz_templates.find_one(
+                                                 {'_id': ObjectId(user_input['mad_lib_id'])})
+
+
 
 @app.route('/delete/<mad_lib_id>')
 def delete(mad_lib_id):
