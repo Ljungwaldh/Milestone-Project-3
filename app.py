@@ -60,18 +60,25 @@ def display_result(inserted_id, skeleton_id):
                            skeleton=skeleton, result=result)
 
 
-@app.route('/display_all/<mad_libz_id>/<template_id>')
-def display_all(mad_libz_id):
-    user_inputs = mongo.db.mad_libz_input.find({'_id': ObjectId(mad_libz_id)})
+@app.route('/display_all')
+def display_all():
+    user_inputs = list(mongo.db.mad_libz_input.find())
     for user_input in user_inputs:
-        mongo.db.mad_libz_templates.find_one()
+        skeleton = mongo.db.mad_libz_templates.find_one(
+                                        {'_id': ObjectId(user_input['mad_lib_id'])})
+        script = skeleton['script']
+        user_input_words = user_input['words']
+        result = tuple(zip(script, user_input_words))
+        result = " ".join(map(" ".join, result))
+        user_input['mad_lib'] = result
+        user_input['title'] = skeleton['title']
+    return render_template('library.html', user_inputs=user_inputs)
 
 
 
-
-@app.route('/delete/<mad_libz_id>')
-def delete(mad_libz_id):
-    mongo.db.mad_libz_input.remove({'_id': ObjectId(mad_libz_id)})
+@app.route('/delete/<mad_lib_id>')
+def delete(mad_lib_id):
+    mongo.db.mad_libz_input.remove({'_id': ObjectId(mad_lib_id)})
     return redirect(url_for('create'))
 
 
