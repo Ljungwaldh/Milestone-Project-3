@@ -13,6 +13,7 @@ app = Flask(__name__)
 
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.config["MONGO_DBNAME"] = 'mad_libz'
+app.secret_key = "$R9=<^hu3YBM>nTGwy8PMTu)s*_ZbwI@?wUoBy&fZ+fM0A%H?(B:F^ZN^!8Q}LQ"
 
 mongo = PyMongo(app)
 
@@ -64,6 +65,15 @@ def login():
         else:
             return "login error"    
         return render_template('login.html')
+
+
+@app.route('/logout')
+@check_logged_in
+def logout():
+    session.pop('logged-in', None)
+    session.pop('user-name', None)
+    session.pop('user-id', None)
+    return redirect(url_for('login'))
 
 
 @app.route('/create')
