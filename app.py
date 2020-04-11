@@ -1,4 +1,5 @@
 import os
+from functools import wraps
 from flask import Flask, render_template, redirect, request, url_for
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
@@ -15,9 +16,30 @@ app.config["MONGO_DBNAME"] = 'mad_libz'
 mongo = PyMongo(app)
 
 
+def check_logged_in(func):
+    @wraps(func)
+    def wrapped_function(*args, **kwargs):
+        if 'logged-in' in session:
+            return(func(*args, **kwargs))
+        else:
+            return render_template('nologin.html')
+    return wrapped_function
+
+
 @app.route('/')
-def hello():
-    return 'Hello World'
+@check_logged_in
+def home():
+    return render_template('home.html')
+
+
+@app.route('/register')
+def login():
+    return render_template('login.html')
+
+
+@app.route('/login')
+def register():
+    return render_template('register.html')
 
 
 @app.route('/create')
