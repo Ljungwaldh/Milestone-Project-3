@@ -31,7 +31,7 @@ def check_logged_in(func):
 @app.route('/')
 @check_logged_in
 def home():
-    return render_template('home.html')
+    return render_template('home.html', username=session['user-name'])
 
 
 @app.route('/register', methods=["GET", "POST"])
@@ -42,7 +42,7 @@ def register():
         username = request.form['userid']
         password = request.form['password']
         _hash = pbkdf2_sha256.hash(password)
-        mongo.db.users_info.insert_one({
+        mongo.db.user_info.insert_one({
             'username': username,
             'password': _hash
         })
