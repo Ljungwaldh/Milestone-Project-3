@@ -1,7 +1,8 @@
 import os
 from functools import wraps
-from flask import Flask, render_template, redirect, request, url_for
+from flask import Flask, render_template, session, redirect, request, url_for
 from flask_pymongo import PyMongo
+from passlib.hash import pbkdf2_sha256
 from bson.objectid import ObjectId
 from os import path
 if path.exists("env.py"):
@@ -22,7 +23,7 @@ def check_logged_in(func):
         if 'logged-in' in session:
             return(func(*args, **kwargs))
         else:
-            return render_template('nologin.html')
+            return render_template('no-login.html')
     return wrapped_function
 
 
@@ -32,14 +33,37 @@ def home():
     return render_template('home.html')
 
 
-@app.route('/register')
-def login():
-    return render_template('login.html')
-
-
-@app.route('/login')
+@app.route('/register', methods=["GET", "POST"])
 def register():
-    return render_template('register.html')
+    if request.method == "GET":
+        return render_template('register.html')
+    elif request.method == "POST":
+        username = request.form['userid']
+        password = request.form['password']
+        _hash = pbkdf2_sha256.hash(password)
+        mongo.db.users_info.insert_one({
+            'username': username,
+            'password': _hash
+        })
+        return redirect(url_for('login'))
+
+
+@app.route('/login', methods=["GET", "POST"])
+def login():
+    if request.method == "GET":
+        return render_template('login.html')
+    elif request.method == "POST":
+        username = request.form['userid']
+        user = mongo.db.user_info.find_one({'username': username})
+        user_password = user['password']
+        form_password = request.form['password']
+        if pbkdf2_sha256.verify(form_password, user_password):
+            session['logged-in'] = True
+            session['user-name'] = username
+            session['user-id'] = str(user['_id'])
+        else:
+            return "login error"    
+        return render_template('login.html')
 
 
 @app.route('/create')
