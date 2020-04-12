@@ -63,8 +63,8 @@ def login():
             session['user-name'] = username
             session['user-id'] = str(user['_id'])
         else:
-            return "login error"    
-        return render_template('login.html')
+            return "login error"
+        return redirect(url_for('home'))
 
 
 @app.route('/logout')
@@ -117,9 +117,8 @@ def display_result(inserted_id, skeleton_id):
     user_input_words = user_input['words']
     result = tuple(zip(script, user_input_words))
     result = " ".join(map(" ".join, result))
-    user_id = user_input['creatorID']
     return render_template('results.html', user_input=user_input,
-                           skeleton=skeleton, user_id=user_id result=result)
+                           skeleton=skeleton, result=result)
 
 
 @app.route('/display_all')
@@ -136,7 +135,6 @@ def display_all():
         result = " ".join(map(" ".join, result))
         user_input['mad_lib'] = result
         user_input['title'] = skeleton['title']
-        user_id = user_input['creatorID']
     return render_template('library.html', user_inputs=user_inputs)
 
 
@@ -146,11 +144,13 @@ def edit(mad_lib_id):
     user_input = mongo.db.mad_libz_input.find_one(
                                                  {'_id': ObjectId(mad_lib_id)})
     skeleton = mongo.db.mad_libz_templates.find_one(
-                                                 {'_id': ObjectId(user_input['mad_lib_id'])})
+                                                 {'_id': ObjectId(
+                                                  user_input['mad_lib_id'])})
     descriptors = skeleton['descriptors']
     words = user_input['words']
     user_prefill = zip(descriptors, words)
-    return render_template('edit.html', mad_lib_id=mad_lib_id, user_prefill=user_prefill)
+    return render_template('edit.html', mad_lib_id=mad_lib_id,
+                           user_prefill=user_prefill)
 
 
 @app.route('/update/<mad_lib_id>', methods=['POST'])
@@ -165,6 +165,7 @@ def update(mad_lib_id):
 
 
 @app.route('/delete/<mad_lib_id>')
+@check_logged_in
 def delete(mad_lib_id):
     mongo.db.mad_libz_input.remove({'_id': ObjectId(mad_lib_id)})
     return redirect(url_for('create'))
