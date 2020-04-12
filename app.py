@@ -143,32 +143,44 @@ def display_all():
 def edit(mad_lib_id):
     user_input = mongo.db.mad_libz_input.find_one(
                                                  {'_id': ObjectId(mad_lib_id)})
-    skeleton = mongo.db.mad_libz_templates.find_one(
-                                                 {'_id': ObjectId(
-                                                  user_input['mad_lib_id'])})
-    descriptors = skeleton['descriptors']
-    words = user_input['words']
-    user_prefill = zip(descriptors, words)
-    return render_template('edit.html', mad_lib_id=mad_lib_id,
-                           user_prefill=user_prefill)
+    if session['user-id'] == user_input['creatorID']:
+        skeleton = mongo.db.mad_libz_templates.find_one(
+                                                    {'_id': ObjectId(
+                                                     user_input['mad_lib_id'])})
+        descriptors = skeleton['descriptors']
+        words = user_input['words']
+        user_prefill = zip(descriptors, words)
+        return render_template('edit.html', mad_lib_id=mad_lib_id,
+                               user_prefill=user_prefill)
+    else:
+        return render_template('invalid-user.html')
 
 
 @app.route('/update/<mad_lib_id>', methods=['POST'])
 @check_logged_in
 def update(mad_lib_id):
     user_input = list(request.form.values())
-    mongo.db.mad_libz_input.update_one(
-                                      {'_id': ObjectId(mad_lib_id)},  
-                                      {'$set': {"words": user_input}}
-    )
-    return redirect(url_for('display_all'))
+    user = mongo.db.mad_libz_input.find_one(
+                                            {'_id': ObjectId(mad_lib_id)})
+    if session['user-id'] == user['creatorID']:
+        mongo.db.mad_libz_input.update_one(
+                                        {'_id': ObjectId(mad_lib_id)},
+                                        {'$set': {"words": user_input}}
+        )
+        return redirect(url_for('display_all'))
+    else:
+        return render_template('invalid-user.html')
 
 
 @app.route('/delete/<mad_lib_id>')
 @check_logged_in
 def delete(mad_lib_id):
-    mongo.db.mad_libz_input.remove({'_id': ObjectId(mad_lib_id)})
-    return redirect(url_for('create'))
+    user = mongo.db.mad_libz_input.find_one({'_id': ObjectId(mad_lib_id)})
+    if session['user-id'] == user['creatorID']:
+        mongo.db.mad_libz_input.remove({'_id': ObjectId(mad_lib_id)})
+        return redirect(url_for('home'))
+    else:
+        return render_template('invalid-user.html')
 
 
 if __name__ == '__main__':
