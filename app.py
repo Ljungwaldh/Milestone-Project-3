@@ -111,14 +111,17 @@ def push_data(template_id):
 def display_result(inserted_id, skeleton_id):
     user_input = mongo.db.mad_libz_input.find_one(
                                             {'_id': ObjectId(inserted_id)})
-    skeleton = mongo.db.mad_libz_templates.find_one(
-                                          {'_id': ObjectId(skeleton_id)})
-    script = skeleton['script']
-    user_input_words = user_input['words']
-    result = tuple(zip(script, user_input_words))
-    result = " ".join(map(" ".join, result))
-    return render_template('results.html', user_input=user_input,
-                           skeleton=skeleton, result=result)
+    if session['user-id'] == user_input['creatorID']:
+        skeleton = mongo.db.mad_libz_templates.find_one(
+                                            {'_id': ObjectId(skeleton_id)})
+        script = skeleton['script']
+        user_input_words = user_input['words']
+        result = tuple(zip(script, user_input_words))
+        result = " ".join(map(" ".join, result))
+        return render_template('results.html', user_input=user_input,
+                               skeleton=skeleton, result=result)
+    else:
+        return render_template('invalid-user.html')
 
 
 @app.route('/display_all')
