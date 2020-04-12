@@ -77,12 +77,14 @@ def logout():
 
 
 @app.route('/create')
+@check_logged_in
 def create():
     return render_template('create.html',
                            skeletons=mongo.db.mad_libz_templates.find())
 
 
 @app.route('/insert_words', methods=['GET'])
+@check_logged_in
 def insert_words():
     selected_id = request.args.get('mad_lib')
     mad_lib = mongo.db.mad_libz_templates.find_one(
@@ -92,17 +94,20 @@ def insert_words():
 
 
 @app.route('/push_data/<template_id>', methods=['POST'])
+@check_logged_in
 def push_data(template_id):
     user_input = list(request.form.values())
     inserted_id = mongo.db.mad_libz_input.insert_one({
         "mad_lib_id": ObjectId(template_id),
-        "words": user_input
+        "words": user_input,
+        "creatorID": session['user-id']
     }).inserted_id
     return redirect(url_for('display_result', inserted_id=inserted_id,
                             skeleton_id=template_id))
 
 
 @app.route('/display_result/<inserted_id>/<skeleton_id>')
+@check_logged_in
 def display_result(inserted_id, skeleton_id):
     user_input = mongo.db.mad_libz_input.find_one(
                                             {'_id': ObjectId(inserted_id)})
@@ -112,26 +117,31 @@ def display_result(inserted_id, skeleton_id):
     user_input_words = user_input['words']
     result = tuple(zip(script, user_input_words))
     result = " ".join(map(" ".join, result))
+    user_id = user_input['creatorID']
     return render_template('results.html', user_input=user_input,
-                           skeleton=skeleton, result=result)
+                           skeleton=skeleton, user_id=user_id result=result)
 
 
 @app.route('/display_all')
+@check_logged_in
 def display_all():
     user_inputs = list(mongo.db.mad_libz_input.find())
     for user_input in user_inputs:
         skeleton = mongo.db.mad_libz_templates.find_one(
-                                        {'_id': ObjectId(user_input['mad_lib_id'])})
+                                        {'_id': ObjectId(
+                                            user_input['mad_lib_id'])})
         script = skeleton['script']
         user_input_words = user_input['words']
         result = tuple(zip(script, user_input_words))
         result = " ".join(map(" ".join, result))
         user_input['mad_lib'] = result
         user_input['title'] = skeleton['title']
+        user_id = user_input['creatorID']
     return render_template('library.html', user_inputs=user_inputs)
 
 
 @app.route('/edit/<mad_lib_id>')
+@check_logged_in
 def edit(mad_lib_id):
     user_input = mongo.db.mad_libz_input.find_one(
                                                  {'_id': ObjectId(mad_lib_id)})
@@ -144,6 +154,7 @@ def edit(mad_lib_id):
 
 
 @app.route('/update/<mad_lib_id>', methods=['POST'])
+@check_logged_in
 def update(mad_lib_id):
     user_input = list(request.form.values())
     mongo.db.mad_libz_input.update_one(

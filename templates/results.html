@@ -2,8 +2,11 @@
 
     <h2>{{ skeleton.title }}</h2>
     <p>{{ result }}</p>
+    <p>{{  }}</p>
 
     <a href="{{ url_for('create') }}">Create another</a>
+    {% if 'user-id' in session %}
     <a href="{{ url_for('delete', mad_lib_id=user_input._id) }}">Delete</a>
+    {% endif %}
     <a href="{{ url_for('display_all') }}">View All Mad Libz</a>
     {% endblock %}
