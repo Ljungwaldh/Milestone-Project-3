@@ -13,7 +13,7 @@ app = Flask(__name__)
 
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.config["MONGO_DBNAME"] = 'mad_libz'
-app.secret_key = os.environ.get('SECRET')
+app.secret_key["SECRET"] = os.environ.get('SECRET')
 
 mongo = PyMongo(app)
 
@@ -149,7 +149,8 @@ def edit(mad_lib_id):
     if session['user-id'] == user_input['creatorID']:
         skeleton = mongo.db.mad_libz_templates.find_one(
                                                     {'_id': ObjectId(
-                                                     user_input['mad_lib_id'])})
+                                                     user_input['mad_lib_id'])
+                                                     })
         descriptors = skeleton['descriptors']
         words = user_input['words']
         user_prefill = zip(descriptors, words)
