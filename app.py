@@ -13,7 +13,7 @@ app = Flask(__name__)
 
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.config["MONGO_DBNAME"] = 'mad_libz'
-app.secret_key["SECRET"] = os.environ.get('SECRET')
+app.secret_key = os.environ.get('SECRET')
 
 mongo = PyMongo(app)
 
