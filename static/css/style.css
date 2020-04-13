@@ -56,15 +56,20 @@ body {
 }
 
 .login,
-.image {
+.img-fluid {
   min-height: 100vh;
 }
 
 .bg-image {
-  background-size: cover;
+  background-size: contain;
   background-position: center;
   padding-right: 0;
   padding-left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* added */
+  overflow: auto;
+  display: block; /* remove inline element whitespace */
 }
 
 .login-heading {
