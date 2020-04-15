@@ -73,7 +73,7 @@ def logout():
     session.pop('logged-in', None)
     session.pop('user-name', None)
     session.pop('user-id', None)
-    return redirect(url_for('login'))
+    return redirect(url_for('home'))
 
 
 @app.route('/create')
