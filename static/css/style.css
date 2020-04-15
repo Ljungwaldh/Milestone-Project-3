@@ -105,6 +105,45 @@ h6 {
   letter-spacing: 0.1rem;
 }
 
+header.masthead {
+  position: relative;
+  overflow: hidden;
+  padding-top: calc(7rem + 72px);
+  padding-bottom: 7rem;
+  background: url('../images/laugh-bg.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: scroll;
+  background-size: cover;
+  box-shadow: inset 0 0 0 1000px rgba(0,0,0,.4);
+}
+
+header.masthead .masthead-content {
+  z-index: 1;
+  position: relative;
+}
+
+header.masthead .masthead-content .masthead-heading {
+  font-size: 4rem;
+}
+
+header.masthead .masthead-content .masthead-subheading {
+  font-size: 2rem;
+}
+
+@media (min-width: 992px) {
+  header.masthead {
+    padding-top: calc(10rem + 55px);
+    padding-bottom: 10rem;
+  }
+  header.masthead .masthead-content .masthead-heading {
+    font-size: 6rem;
+  }
+  header.masthead .masthead-content .masthead-subheading {
+    font-size: 4rem;
+  }
+}
+
 
 .bg-primary {
   background-color: #ee09db !important;
@@ -137,4 +176,16 @@ h6 {
 .btn-secondary:focus {
   box-shadow: 0 0 0 0.2rem rgba(255, 106, 0, 0.5);
 }
-/* Header for Landing Page */
+
+.log-reg-buttons {
+  display: inline-block;
+  margin: auto;
+  position: relative;
+  top: 0; left: 0; bottom: 0; right: 0;
+}
+
+.log-reg-buttons {
+    margin-bottom: 25px;
+}
+
+/* Footer Section */
