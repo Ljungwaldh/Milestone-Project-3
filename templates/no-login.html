@@ -1,3 +1,12 @@
 {% extends 'base.html'%} {% block content %}
-Please login or register to view this content. You can login <a href="{{url_for('login')}}">here</a> or register <a href="{{url_for('register')}}">here</a>.
+ <header class="masthead text-center text-white">
+    <div class="masthead-content">
+      <div class="container">
+        <h1 class="masthead-heading mb-0">Mad Libz</h1>
+        <h2 class="masthead-subheading mb-0">Randomness in Stories</h2>
+        <a href="{{url_for('login')}}" class="btn btn-primary btn-xl rounded-pill mt-5">Login</a>
+        <a href="{{url_for('register')}}" class="btn btn-primary btn-xl rounded-pill mt-5">Register</a>
+      </div>
+    </div>
+  </header>
 {% endblock %}
