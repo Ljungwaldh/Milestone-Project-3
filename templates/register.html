@@ -10,6 +10,9 @@
                     <input type="text" name="userid" class="form-control" id="inputUsername" placeholder="Username" required autofocus>
                     <label for="inputUsername">Username</label>
               </div>
+                {% if error %}
+                <p class=error><strong>Error:</strong> {{ error }}
+                {% endif %}
               <div class="form-label-group">
                     <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password" required>
                     <label for="inputPassword">Password</label>

@@ -40,13 +40,18 @@ def register():
         return render_template('register.html')
     elif request.method == "POST":
         username = request.form['userid']
-        password = request.form['password']
-        _hash = pbkdf2_sha256.hash(password)
-        mongo.db.user_info.insert_one({
-            'username': username,
-            'password': _hash
-        })
-        return redirect(url_for('login'))
+        user = mongo.db.user_info.find_one({
+            'username': username})
+        if user == None:
+            password = request.form['password']
+            _hash = pbkdf2_sha256.hash(password)
+            mongo.db.user_info.insert_one({
+                'username': username,
+                'password': _hash
+            })
+            return redirect(url_for('login'))
+        else:
+            return render_template('register.html', error="User already exists")
 
 
 @app.route('/login', methods=["GET", "POST"])
