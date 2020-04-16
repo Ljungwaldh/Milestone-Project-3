@@ -51,7 +51,8 @@ def register():
             })
             return redirect(url_for('login'))
         else:
-            return render_template('register.html', error="User already exists")
+            return render_template('register.html',
+                                   error="User already exists")
 
 
 @app.route('/login', methods=["GET", "POST"])
@@ -126,7 +127,8 @@ def display_result(inserted_id, skeleton_id):
         return render_template('results.html', user_input=user_input,
                                skeleton=skeleton, result=result)
     else:
-        return render_template('invalid-user.html')
+        return render_template('home.html',
+                               invalid_user="Sorry, invalid user")
 
 
 @app.route('/display_all')
@@ -162,7 +164,8 @@ def edit(mad_lib_id):
         return render_template('edit.html', mad_lib_id=mad_lib_id,
                                user_prefill=user_prefill)
     else:
-        return render_template('invalid-user.html')
+        return render_template('home.html',
+                               invalid_user="Sorry, invalid user")
 
 
 @app.route('/update/<mad_lib_id>', methods=['POST'])
@@ -178,7 +181,8 @@ def update(mad_lib_id):
         )
         return redirect(url_for('display_all'))
     else:
-        return render_template('invalid-user.html')
+        return render_template('home.html',
+                               invalid_user="Sorry, invalid user")
 
 
 @app.route('/delete/<mad_lib_id>')
@@ -189,7 +193,8 @@ def delete(mad_lib_id):
         mongo.db.mad_libz_input.remove({'_id': ObjectId(mad_lib_id)})
         return redirect(url_for('display_all'))
     else:
-        return render_template('invalid-user.html')
+        return render_template('home.html',
+                               invalid_user="Sorry, invalid user")
 
 
 if __name__ == '__main__':
