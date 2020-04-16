@@ -69,7 +69,8 @@ def login():
             session['user-name'] = username
             session['user-id'] = str(user['_id'])
         else:
-            return "login error"
+            return render_template('login.html', 
+                                   error="Username and/or password incorrect")
         return redirect(url_for('home'))
 
 
