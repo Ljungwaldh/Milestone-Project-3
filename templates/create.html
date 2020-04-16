@@ -1,15 +1,22 @@
 {% extends 'base.html'%} {% block content %}
-
-<form action="{{ url_for('insert_words') }}">
-<select id="skeleton" name="mad_lib">
-                <option value="" disabled selected>Choose MadLib Theme</option>
-                {% for skeleton in skeletons %}
-                    <option value="{{skeleton._id}}">{{skeleton.title}}</option>
-                {% endfor %}
-            </select>
-            <label>MadLib Theme</label>
-  <input type="submit" value="Submit">
-</form>
-
+<div class="container-fluid page-bg">
+    <div class="row justify-content-center page-options">
+    <div class="col-12 text-center">
+        <h2>Select a Theme</h2>
+    </div>
+    <div class="col-md-4 text-center page-option">
+        <img class="img-fluid rounded-circle" src="static/images/laughing-guy.jpg" alt="">
+        <form action="{{ url_for('insert_words') }}" class="mad-lib-theme">
+        <select class="form-control form-control-lg" id="skeleton" name="mad_lib">
+            <option value="" disabled selected>Mad Lib Theme</option>
+            {% for skeleton in skeletons %}
+            <option value="{{skeleton._id}}">{{skeleton.title}}</option>
+            {% endfor %}
+        </select>
+        <button class="btn btn-lg btn-secondary btn-block text-uppercase" type="submit">Next</button>
+        </form>
+    </div>
+    </div>
+</div>
 
 {% endblock %}

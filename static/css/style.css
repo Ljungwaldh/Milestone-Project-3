@@ -317,6 +317,7 @@ header.masthead .masthead-content .masthead-subheading {
   }
 }
 
+/* Home page */
 
 .page-bg {
   position: relative;
@@ -336,7 +337,7 @@ header.masthead .masthead-content .masthead-subheading {
   .page-options {
     align-items: center;
     display: flex;
-    margin-top: 200px;
+    margin-top: 150px;
   }
 
   .page-option {
@@ -344,4 +345,9 @@ header.masthead .masthead-content .masthead-subheading {
     margin-bottom: 20px;
   }
 
+
+.mad-lib-theme {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
 /* Footer Section */
