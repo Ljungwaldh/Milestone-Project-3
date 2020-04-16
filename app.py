@@ -125,8 +125,13 @@ def display_result(inserted_id, skeleton_id):
         user_input_words = user_input['words']
         result = tuple(zip(script, user_input_words))
         result = " ".join(map(" ".join, result))
+        creator = mongo.db.user_info.find_one(
+                                            {'_id': ObjectId
+                                             (user_input['creatorID'])})
+        username = creator['username']
         return render_template('results.html', user_input=user_input,
-                               skeleton=skeleton, result=result)
+                               skeleton=skeleton, result=result,
+                               username=username)
     else:
         return render_template('home.html',
                                invalid_user="Sorry, invalid user")
@@ -146,7 +151,12 @@ def display_all():
         result = " ".join(map(" ".join, result))
         user_input['mad_lib'] = result
         user_input['title'] = skeleton['title']
-    return render_template('library.html', user_inputs=user_inputs)
+        creator = mongo.db.user_info.find_one(
+                                            {'_id': ObjectId
+                                             (user_input['creatorID'])})
+        username = creator['username']
+    return render_template('library.html', user_inputs=user_inputs,
+                           username=username)
 
 
 @app.route('/edit/<mad_lib_id>')
