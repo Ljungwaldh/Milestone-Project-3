@@ -317,7 +317,7 @@ header.masthead .masthead-content .masthead-subheading {
   }
 }
 
-/* Home page */
+/* Home and Create pages */
 
 .page-bg {
   position: relative;
@@ -345,9 +345,18 @@ header.masthead .masthead-content .masthead-subheading {
     margin-bottom: 20px;
   }
 
+/* Theme Selection */
 
 .mad-lib-theme {
     margin-top: 25px;
     margin-bottom: 25px;
+}
+
+.result-card {
+    color: #000;
+}
+
+.result-card {
+    border-radius: 15px;
 }
 /* Footer Section */
