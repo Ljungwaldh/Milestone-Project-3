@@ -151,6 +151,7 @@ header.masthead .masthead-content .masthead-subheading {
 .btn-primary {
   background-color: #ee09db;
   border-color: #ee09db;
+  margin: 10px 10px 10px 10px;
 }
 
 .btn-primary:active, .btn-primary:focus, .btn-primary:hover {
@@ -176,10 +177,6 @@ header.masthead .masthead-content .masthead-subheading {
   box-shadow: 0 0 0 0.2rem rgba(255, 106, 0, 0.5);
 }
 
-
-.log-reg-buttons {
-    margin-bottom: 25px;
-}
 
 /* Log-in page */
 
@@ -292,6 +289,10 @@ header.masthead .masthead-content .masthead-subheading {
   color: #777;
 }
 
+.word-input{
+    margin: 10px 10px 10px 10px;
+}
+
 /* Fallback for Edge
 -------------------------------------------------- */
 
@@ -352,10 +353,12 @@ header.masthead .masthead-content .masthead-subheading {
     margin-bottom: 25px;
 }
 
+/* Mad Lib Card */
 .result-card {
     background: #e98a15;
     border-radius: 15px;
     margin: 30px 30px 30px 30px;
+    color: #000;
 }
 
 
