@@ -176,12 +176,6 @@ header.masthead .masthead-content .masthead-subheading {
   box-shadow: 0 0 0 0.2rem rgba(255, 106, 0, 0.5);
 }
 
-.log-reg-buttons {
-  display: inline-block;
-  margin: auto;
-  position: relative;
-  top: 0; left: 0; bottom: 0; right: 0;
-}
 
 .log-reg-buttons {
     margin-bottom: 25px;
@@ -189,7 +183,7 @@ header.masthead .masthead-content .masthead-subheading {
 
 /* Log-in page */
 
-.form-page {
+.authentication-page {
   position: relative;
   overflow: hidden;
   padding-top: calc(7rem + 72px);
@@ -324,5 +318,30 @@ header.masthead .masthead-content .masthead-subheading {
 }
 
 
+.home-page {
+  position: relative;
+  overflow: scroll;
+  width: 100vw;
+  height: 100vh;
+  background: url('../images/laugh-bg.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: scroll;
+  background-size: cover;
+  box-shadow: inset 0 0 0 1000px rgba(0,0,0,.4);
+  color: #fff;
+  min-height: 100vh;
+  }
+
+  .home-buttons {
+    align-items: center;
+    display: flex;
+    margin-top: 200px;
+  }
+
+  .home-option {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
 
 /* Footer Section */
