@@ -1,9 +1,22 @@
     {% extends 'base.html'%} {% block content %}
-    
-    <form action="{{ url_for('update', mad_lib_id=mad_lib_id) }}" method="POST">
-    {% for descriptor, word in user_prefill %}
-        Please type in a {{descriptor}}: <input type="text" name="{{ loop.index }}" value="{{ word }}"></input>
-    {% endfor %}
-    <button type="submit" value="Submit">
 
+
+  <div class="container-fluid authentication-page">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-4 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body">
+            <h5 class="card-title text-center">Edit Words</h5>
+            <form class="form-signin" action="{{ url_for('update', mad_lib_id=mad_lib_id) }}" method="POST">
+              {% for descriptor, word in user_prefill %}
+                    <input type="text" name="{{ loop.index }}" class="form-control" value="{{ word }}" placeholder="Type in {{ descriptor }}" required>
+                {% endfor %}
+              </div>
+              <button class="btn btn-lg btn-secondary btn-block text-uppercase" type="submit">Edit Mad Lib</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}
