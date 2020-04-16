@@ -1,11 +1,24 @@
     {% extends 'base.html'%} {% block content %}
+<div class="container-fluid page-bg">
+<div class="row justify-content-center page-options">
+  <div class="col-sm-7 text-center">
 
-    <h2>{{ skeleton.title }}</h2>
-    <p>{{ result }}</p>
-
-    <a href="{{ url_for('create') }}">Create another</a>
+<div class="card text-center result-card">
+  <div class="card-header">
+    Created by {{ username }}
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{ skeleton.title }}</h5>
+    <p class="card-text">{{ result }}</p>
+    <a href="{{ url_for('create') }}" class="btn btn-primary btn-xl rounded-pill mt-5">Create another</a>
     {% if session['user-id'] == user_input['creatorID'] %}
-    <a href="{{ url_for('delete', mad_lib_id=user_input._id) }}">Delete</a>
+    <a href="{{ url_for('delete', mad_lib_id=user_input._id) }}" class="btn btn-primary btn-xl rounded-pill mt-5">Delete</a>
     {% endif %}
-    <a href="{{ url_for('display_all') }}">View All Mad Libz</a>
+    <a href="{{ url_for('display_all') }}" class="btn btn-primary btn-xl rounded-pill mt-5">View All Mad Libz</a>
+  </div>
+</div>
+
+  </div>
+</div>
+</div>
     {% endblock %}
