@@ -187,7 +187,7 @@ def delete(mad_lib_id):
     user = mongo.db.mad_libz_input.find_one({'_id': ObjectId(mad_lib_id)})
     if session['user-id'] == user['creatorID']:
         mongo.db.mad_libz_input.remove({'_id': ObjectId(mad_lib_id)})
-        return redirect(url_for('home'))
+        return redirect(url_for('display_all'))
     else:
         return render_template('invalid-user.html')
 

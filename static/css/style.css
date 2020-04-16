@@ -353,8 +353,9 @@ header.masthead .masthead-content .masthead-subheading {
 }
 
 .result-card {
-    color: #000;
+    background: #e98a15;
     border-radius: 15px;
+    margin: 30px 30px 30px 30px;
 }
 
 

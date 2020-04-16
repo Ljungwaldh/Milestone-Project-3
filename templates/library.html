@@ -1,6 +1,9 @@
 {% extends 'base.html'%} {% block content %}
 <div class="container-fluid page-bg">
 <div class="row justify-content-center page-options">
+    <div class="col-12 text-center">
+        <h2>Mad Libz Library</h2>
+    </div>
 {% for user_input in user_inputs %}
   <div class="col-sm-6">
     <div class="card result-card">
@@ -8,8 +11,8 @@
         <h5 class="card-title">{{ user_input.title }}</h5>
         <p class="card-text">{{ user_input.mad_lib }}</p>
         {% if session['user-id'] == user_input['creatorID'] %}
-        <a href="{{ url_for('delete', mad_lib_id=user_input._id) }}">Delete</a>
-        <a href="{{ url_for('edit', mad_lib_id=user_input._id) }}">Edit</a>
+        <a href="{{ url_for('delete', mad_lib_id=user_input._id) }}" class="btn btn-primary btn-xl rounded-pill mt-5">Delete</a>
+        <a href="{{ url_for('edit', mad_lib_id=user_input._id) }}" class="btn btn-primary btn-xl rounded-pill mt-5">Edit</a>
         {% endif %}
       </div>
     </div>
