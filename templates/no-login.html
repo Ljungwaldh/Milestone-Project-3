@@ -1,78 +1,78 @@
 {% extends 'base.html'%} {% block content %}
-          <!-- Hero Video and Logo/Text -->
-  <header class="masthead text-center text-white">
+<!-- Hero Video and Logo/Text -->
+<header class="masthead text-center text-white">
     <div class="masthead-content">
-      <div class="container">
-        <h1 class="masthead-heading mb-0">Mad Libz</h1>
-        <h2 class="masthead-subheading mb-0">Laughs From Randomness</h2>
-        <a href="#info-start" class="btn btn-primary btn-xl rounded-pill mt-5">Learn More</a>
-      </div>
+        <div class="container">
+            <h1 class="masthead-heading mb-0">Mad Libz</h1>
+            <h2 class="masthead-subheading mb-0">Laughs From Randomness</h2>
+            <a href="#info-start" class="btn btn-primary btn-xl rounded-pill mt-5">Learn More</a>
+        </div>
     </div>
-  </header>
+</header>
 
 <section id="info-start">
     <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-6 order-lg-2">
-          <div class="p-5">
-            <img class="img-fluid rounded-circle" src="static/images/laughing-guy.jpg" alt="">
-          </div>
+        <div class="row align-items-center">
+            <div class="col-lg-6 order-lg-2">
+                <div class="p-5">
+                    <img class="img-fluid rounded-circle" src="static/images/laughing-guy.jpg" alt="">
+                </div>
+            </div>
+            <div class="col-lg-6 order-lg-1">
+                <div class="p-5">
+                    <h2 class="display-4">What's Mad Libs?</h2>
+                    <p>According to Wikipedia, Mad Libs is a phrasal template word game where one player prompts others for a list of words to substitute for blanks in a story before reading aloud</p>
+                </div>
+            </div>
         </div>
-        <div class="col-lg-6 order-lg-1">
-          <div class="p-5">
-            <h2 class="display-4">What's Mad Libs?</h2>
-            <p>According to Wikipedia, Mad Libs is a phrasal template word game where one player prompts others for a list of words to substitute for blanks in a story before reading aloud</p>
-          </div>
-        </div>
-      </div>
     </div>
-  </section>
+</section>
 
-  <section>
+<section>
     <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-6">
-          <div class="p-5">
-            <img class="img-fluid rounded-circle" src="static/images/soft-emojis.jpg" alt="">
-          </div>
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="p-5">
+                    <img class="img-fluid rounded-circle" src="static/images/soft-emojis.jpg" alt="">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="p-5">
+                    <h2 class="display-4">How it Works</h2>
+                    <p>Simply start to create a Msd Lib, pick a theme, add in words based on the words prompts (eg. noun, adjective, location etc.), and you'll generate a Mad Lib! Afterwards, in the View All page, you'll be able to edit or delete your Mad Lib</p>
+                </div>
+            </div>
         </div>
-        <div class="col-lg-6">
-          <div class="p-5">
-            <h2 class="display-4">How it Works</h2>
-            <p>Simply start to create a Msd Lib, pick a theme, add in words based on the words prompts (eg. noun, adjective, location etc.), and you'll generate a Mad Lib! Afterwards, in the View All page, you'll be able to edit or delete your Mad Lib</p>
-          </div>
-        </div>
-      </div>
     </div>
-  </section>
+</section>
 
-  <section>
+<section>
     <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-6 order-lg-2">
-          <div class="p-5">
-            <img class="img-fluid rounded-circle" src="static/images/laughing-woman.jpg" alt="">
-          </div>
+        <div class="row align-items-center">
+            <div class="col-lg-6 order-lg-2">
+                <div class="p-5">
+                    <img class="img-fluid rounded-circle" src="static/images/laughing-woman.jpg" alt="">
+                </div>
+            </div>
+            <div class="col-lg-6 order-lg-1">
+                <div class="p-5">
+                    <h2 class="display-4">How do I get Started?</h2>
+                    <p>Simply Register yourself as a new user (if you don't have a user already), log in and you can start creating Mad Libs as well as view other entries by other users!</p>
+                </div>
+            </div>
         </div>
-        <div class="col-lg-6 order-lg-1">
-          <div class="p-5">
-            <h2 class="display-4">How do I get Started?</h2>
-            <p>Simply Register yourself as a new user (if you don't have a user already), log in and you can start creating Mad Libs as well as view other entries by other users!</p>
-          </div>
-        </div>
-      </div>
     </div>
-  </section>
+</section>
 
 <div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-5 text-center">
-        <a href="{{url_for('login')}}" class="btn btn-primary btn-xl rounded-pill mt-5">Login</a>
+    <div class="row justify-content-center">
+        <div class="col-md-5 text-center">
+            <a href="{{url_for('login')}}" class="btn btn-primary btn-xl rounded-pill mt-5">Login</a>
+        </div>
+        <div class="col-md-5 text-center">
+            <a href="{{url_for('register')}}" class="btn btn-primary btn-xl rounded-pill mt-5">Register</a>
+        </div>
     </div>
-    <div class="col-md-5 text-center">
-        <a href="{{url_for('register')}}" class="btn btn-primary btn-xl rounded-pill mt-5">Register</a>
-       </div>
-  </div>
 </div>
 
 {% endblock %}

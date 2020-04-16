@@ -1,21 +1,19 @@
 {% extends 'base.html'%} {% block content %}
 <div class="container-fluid page-bg">
     <div class="row justify-content-center page-options">
-    <div class="col-12 text-center">
-        <h2>Welcome {{ username }}!</h2>
-        {% if invalid_user %}
-        <p class=error><strong>Error:</strong> {{ invalid_user }}
-        {% endif %}
+        <div class="col-12 text-center">
+            <h2>Welcome {{ username }}!</h2> {% if invalid_user %}
+            <p class=error><strong>Error:</strong> {{ invalid_user }} {% endif %}
+        </div>
+        <div class="col-md-5 text-center page-option">
+            <img class="img-fluid rounded-circle" src="static/images/laughing-guy.jpg" alt="">
+            <a href="{{url_for('create')}}" class="btn btn-primary btn-xl rounded-pill mt-5">Create A Mad Lib</a>
+        </div>
+        <div class="col-md-5 text-center page-option">
+            <img class="img-fluid rounded-circle" src="static/images/laughing-woman.jpg" alt="">
+            <a href="{{url_for('display_all')}}" class="btn btn-primary btn-xl rounded-pill mt-5">View All Mad Libz</a>
+        </div>
     </div>
-    <div class="col-md-5 text-center page-option">
-        <img class="img-fluid rounded-circle" src="static/images/laughing-guy.jpg" alt="">
-        <a href="{{url_for('create')}}" class="btn btn-primary btn-xl rounded-pill mt-5">Create A Mad Lib</a>
-    </div>
-    <div class="col-md-5 text-center page-option">
-        <img class="img-fluid rounded-circle" src="static/images/laughing-woman.jpg" alt="">
-        <a href="{{url_for('display_all')}}" class="btn btn-primary btn-xl rounded-pill mt-5">View All Mad Libz</a>
-       </div>
-  </div>
 </div>
 
 {% endblock %}
