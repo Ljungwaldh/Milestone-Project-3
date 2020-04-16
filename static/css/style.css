@@ -85,6 +85,8 @@ h6 {
   border-radius: 5rem;
 }
 
+/* Navbar */
+
 .navbar-custom {
   padding-top: 1rem;
   padding-bottom: 1rem;
@@ -104,6 +106,8 @@ h6 {
   font-weight: 700;
   letter-spacing: 0.1rem;
 }
+
+/* No-login landing page header */
 
 header.masthead {
   position: relative;
@@ -144,6 +148,8 @@ header.masthead .masthead-content .masthead-subheading {
   }
 }
 
+/* General button styles */
+
 .bg-primary {
   background-color: #ee09db !important;
 }
@@ -177,8 +183,7 @@ header.masthead .masthead-content .masthead-subheading {
   box-shadow: 0 0 0 0.2rem rgba(255, 106, 0, 0.5);
 }
 
-
-/* Log-in page */
+/* Log-in/Register pages */
 
 .authentication-page {
   position: relative;
@@ -293,7 +298,7 @@ header.masthead .masthead-content .masthead-subheading {
     margin: 10px 10px 10px 10px;
 }
 
-/* Fallback for Edge
+/* Forms - Fallback for Edge
 -------------------------------------------------- */
 
 @supports (-ms-ime-align: auto) {
@@ -305,7 +310,7 @@ header.masthead .masthead-content .masthead-subheading {
   }
 }
 
-/* Fallback for IE
+/* Forms - Fallback for IE
 -------------------------------------------------- */
 
 @media all and (-ms-high-contrast: none),
@@ -360,6 +365,5 @@ header.masthead .masthead-content .masthead-subheading {
     margin: 30px 30px 30px 30px;
     color: #000;
 }
-
 
 /* Footer Section */
