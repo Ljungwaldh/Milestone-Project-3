@@ -42,7 +42,7 @@ def register():
         username = request.form['userid']
         user = mongo.db.user_info.find_one({
             'username': username})
-        if user == None:
+        if user is None:
             password = request.form['password']
             _hash = pbkdf2_sha256.hash(password)
             mongo.db.user_info.insert_one({
@@ -69,7 +69,7 @@ def login():
             session['user-name'] = username
             session['user-id'] = str(user['_id'])
         else:
-            return render_template('login.html', 
+            return render_template('login.html',
                                    error="Username and/or password incorrect")
         return redirect(url_for('home'))
 
@@ -154,9 +154,9 @@ def display_all():
         creator = mongo.db.user_info.find_one(
                                             {'_id': ObjectId
                                              (user_input['creatorID'])})
-        username = creator['username']
+        user_input['username'] = creator['username']
     return render_template('library.html', user_inputs=user_inputs,
-                           username=username)
+                           user_input=user_input)
 
 
 @app.route('/edit/<mad_lib_id>')
