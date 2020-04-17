@@ -1,4 +1,5 @@
 import os
+import itertools
 from functools import wraps
 from flask import Flask, render_template, session, redirect, request, url_for
 from flask_pymongo import PyMongo
@@ -123,7 +124,8 @@ def display_result(inserted_id, skeleton_id):
                                             {'_id': ObjectId(skeleton_id)})
         script = skeleton['script']
         user_input_words = user_input['words']
-        result = tuple(zip(script, user_input_words))
+        result = tuple(itertools.zip_longest(script, user_input_words))
+        result = [tuple('' if i is None else i for i in t) for t in result]
         result = " ".join(map(" ".join, result))
         creator = mongo.db.user_info.find_one(
                                             {'_id': ObjectId
@@ -147,7 +149,8 @@ def display_all():
                                             user_input['mad_lib_id'])})
         script = skeleton['script']
         user_input_words = user_input['words']
-        result = tuple(zip(script, user_input_words))
+        result = tuple(itertools.zip_longest(script, user_input_words))
+        result = [tuple('' if i is None else i for i in t) for t in result]
         result = " ".join(map(" ".join, result))
         user_input['mad_lib'] = result
         user_input['title'] = skeleton['title']
