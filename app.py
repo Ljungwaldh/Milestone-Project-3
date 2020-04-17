@@ -1,7 +1,7 @@
 import os
 import itertools
 from functools import wraps
-from flask import Flask, render_template, session, redirect, request, url_for
+from flask import Flask, flash, render_template, session, redirect, request, url_for
 from flask_pymongo import PyMongo
 from passlib.hash import pbkdf2_sha256
 from bson.objectid import ObjectId
@@ -72,6 +72,7 @@ def login():
         else:
             return render_template('login.html',
                                    error="Username and/or password incorrect")
+        flash('You were successfully logged in')
         return redirect(url_for('home'))
 
 
@@ -193,6 +194,7 @@ def update(mad_lib_id):
                                         {'_id': ObjectId(mad_lib_id)},
                                         {'$set': {"words": user_input}}
         )
+        flash('Mad Lib was updated')
         return redirect(url_for('display_all'))
     else:
         return render_template('home.html',
@@ -205,6 +207,7 @@ def delete(mad_lib_id):
     user = mongo.db.mad_libz_input.find_one({'_id': ObjectId(mad_lib_id)})
     if session['user-id'] == user['creatorID']:
         mongo.db.mad_libz_input.remove({'_id': ObjectId(mad_lib_id)})
+        flash('Mad Lib was deleted')
         return redirect(url_for('display_all'))
     else:
         return render_template('home.html',
