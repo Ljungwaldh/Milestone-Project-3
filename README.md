@@ -43,3 +43,4 @@ has mainly come from the recent need for people needing new ways to entertain th
 6. As a new user/returning to the website, I want to be able to get in touch with the site owner to suggest new themes for the mad lib generator
 7. As a new/returning user to the website, I want to be able to not only read my mad lib entries, but to also be able to edit and delete these if I so please
 8. As a new/returning user, I want to be the only one who can edit and delete my mad lib entries through apporpriate user authentication
+
