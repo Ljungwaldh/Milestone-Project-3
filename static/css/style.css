@@ -170,6 +170,7 @@ header.masthead .masthead-content .masthead-subheading {
 .authentication-page {
   position: relative;
   overflow: hidden;
+  height: 100vh;
   padding-top: calc(7rem + 72px);
   padding-bottom: 7rem;
   background: url('../images/laugh-bg.jpg');
@@ -284,7 +285,8 @@ header.masthead .masthead-content .masthead-subheading {
 
 .user-input-page {
     position: relative;
-    overflow: hidden;
+    overflow: scroll;
+    height: 100vh;
     padding-top: calc(7rem + 72px);
     padding-bottom: 7rem;
     background: url('../images/laugh-bg.jpg');
