@@ -247,7 +247,7 @@ header.masthead .masthead-content .masthead-subheading {
     margin: 10px 10px 10px 10px;
 }
 
-/* Home and Create pages */
+/* General styles for background image and content organisation */
 
 .page-bg {
   position: relative;
@@ -281,6 +281,20 @@ header.masthead .masthead-content .masthead-subheading {
     margin-top: 25px;
     margin-bottom: 25px;
 }
+
+.user-input-page {
+    position: relative;
+    overflow: hidden;
+    padding-top: calc(7rem + 72px);
+    padding-bottom: 7rem;
+    background: url('../images/laugh-bg.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: scroll;
+    background-size: cover;
+    box-shadow: inset 0 0 0 1000px rgba(0,0,0,.4);
+}
+
 
 /* Mad Lib Card */
 .result-card {
