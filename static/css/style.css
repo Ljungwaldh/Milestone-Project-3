@@ -305,3 +305,40 @@ header.masthead .masthead-content .masthead-subheading {
     margin: 30px 30px 30px 30px;
     color: #000;
 }
+
+/* -----------Footer--------- */
+
+footer .container-fluid {
+    padding-top: 10px;
+    color: #fff;
+    opacity: 0.8;
+    background: #000;
+}
+
+.footer-logo p {
+    font-size: 13px;
+}
+
+.social-links {
+    padding-bottom: 15px;
+}
+
+.social-links li a i {
+    width: 30px;
+    height: 30px;
+    padding: 12px 0;
+    border-radius: 50%;
+    font-size: 13px;
+    line-height: 7px;
+    text-align: center;
+    color: #fafafa;
+    background: rgba(8, 8, 8, .9);
+    transition: all 0.35s ease-in-out;
+    -moz-transition: all 0.35s ease-in-out;
+    -webkit-transition: all 0.35s ease-in-out;
+    -o-transition: all 0.35s ease-in-out;
+}
+
+.social-links li a i:hover {
+    background-color:  rgba(238, 92, 8, 0.85);
+}
