@@ -44,3 +44,23 @@ has mainly come from the recent need for people needing new ways to entertain th
 7. As a new/returning user to the website, I want to be able to not only read my mad lib entries, but to also be able to edit and delete these if I so please
 8. As a new/returning user, I want to be the only one who can edit and delete my mad lib entries through apporpriate user authentication
 
+## Design Choices
+My design choices were motivated by wanting to create a website that felt both fun but at the same time give it the look and feel that it would be for adults. I wanted the website to be easy to use and navigate across as well as create positive/humorous experiences for users. The choices I made included the following:
+
+### Themes and snippets
+
+- To help build my HTML and CSS styling efficiently with a professional look, I used the Start Bootstrap theme of One Page Wonder. I chose this theme to kick off my website and it’s landing page (pre-logged in stage) due to the simple and fun response it gives. Since the website aims for simplicity too, I deemed it appropriate to find a theme that would suit a one page style that I could look to repeat across all my HTML pages. The theme also provides attractive positioning of images, something I felt was important in order to grab the user’s attention in a positive manner. The fonts included here of Lato and Catamaran provide impactful but fun text to help engage users further (especially Catamaran for engaging headers).
+
+- For my login, register and insert-words pages I used a Start Bootstrap snippet as inspiration to build simple built elegant forms, these being customized further with button styles and formatting from the One Page Wonder theme
+
+- For the footer I’ve placed in the base.html file I used a footer from a previous project of mine (my Code Institute Milestone Project 1), customizing the content and styling slightly in order to give relevance to it in relation to the website. This footer was used for inspiration purely due to simplicity, which is part of the website’s aims.
+
+### Colours
+As a starting point, and perhaps subjective opinion of the developer, the project would get inspiration from two sources:
+- The use of an orange colour, which can be associated with energy/fun, which could be used as a starting point for building the colour palette. Through using Coolers, I generated the colour scheme visualised below that I would take inspiration from for the different colours I would use:
+
+(add image)
+
+- Making sure I had a hero/background image that would match both the website’s theme of humour as well as the colour scheme decided upon. This led to using the image visualised below:
+
+(add image)
