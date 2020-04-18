@@ -233,3 +233,29 @@ Here are some examples of how the data looks inside the database:
 (link to json file for user info)
 
 The templates collection stays static, and its ID is passed into a user input document once a user has created a mad lib. This template ID being passed in helps to build the form users are redirected to in order to get the relevant text input fields and prompts so that the resulting mad lib is given the most relevant information/words as possible. When a new user signs up/registers to the website with their username and password, a new document storing this data, along with a generated user ID, is inserted into the user info collection. This user ID is also passed into a user input document when the user creates a new mad lib (record). This helps to restrict other users from editing and deleting that mad lib record which they did not create.
+
+## Technologies Used
+
+### Tools and Libraries
+* [JQuery][] - used as part of being able to initialize Bootstrap components
+* [GitPod][] - The developer used this tool as their IDE when building this project
+* [Bootstrap][] - Utilized to simply html structure of website and responsiveness of it. [Popper][] also used to be able to enable some Bootstrap functionality
+* [GitHub][] - This project used GitHub to be able to store the project remotely
+* [Git][] - used for version control of the project
+* [FontAwesome][] - Icons in the footer section for social media links coming from this resource
+* [MongoDB.Atlas][] - Used this non-relational cloud database to store the data used for this website
+* [Google Fonts][] - Used Catamaran and Lato fonts for text content
+* [PyMongo][] - Provides connection between python and MongoDB
+* [Flask][] - to be able to construct and render templates into html using python
+* [Jinja][] - helps to smoothly present database data and any other variables created in the backend to the frontend
+* [Imgbb][] - Used to host my images that I would link to to my README file. Experienced issues previously with Github failing to load images that are stored in the repository, hence why this solution is used instead
+* [PIP] - Needed in order to install packages/tools into workspace
+* [Passlib][] - Package installed in order to hash passwords that are stored into the database
+* [Coolers][] - for providing a colour palette based off one colour that was intended to be used
+* [RandomKeygen][] - efficient solution to generate a SECRET key for securing hashed password stored in the database
+
+### Languages
+This project predominantly uses HTML, CSS and Python programming languages. While it would be considered a strong addition to include Javascript for this project to improve user experience, there are three reasons why, within the time scope for this project with Code Institute, that it does not include any. These include:
+ - Majority of focus was placed on creating features that require python, Flask and Jinja, and as a result, has given limited-to-no time for implementing Javascript into the front end
+- Considering the user stories for this website/application, the aim is to have simplicity, and the website provides this. Also, since the target audience and engagement aims to be fun/casual, it isn’t the highest priority that the user interface is of the highest quality in order to induce a positive experience for users. The developer believes that the functionality itself can provide the /funcomedy experience users are looking for
+- the inclusion of Javascript code is not a requirement for this project in terms of the time scope for Code Institute. While it would be beneficial to include Javascript, the developer has chosen to submit it in a state where it would be easy to implement this kind of code in future development
