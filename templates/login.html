@@ -6,6 +6,13 @@
                 <div class="card-body">
                     <h5 class="card-title text-center">Log In</h5> {% if error %}
                     <p class=error><strong>Error:</strong> {{ error }} {% endif %}
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                    {% for category, message in messages %}
+                    <p>{{ message }}</p>
+                    {% endfor %}
+                    {% endif %}
+                    {% endwith %}
                         <form class="form-signin" method="POST" action="{{url_for('login')}}">
                             <div class="form-label-group">
                                 <input type="text" name="userid" class="form-control" id="inputUsername" placeholder="Username" required autofocus>

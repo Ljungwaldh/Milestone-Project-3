@@ -19,6 +19,7 @@ app.secret_key = os.environ.get('SECRET')
 mongo = PyMongo(app)
 
 
+# Function decorator is used for other functions to check if website visitor is logged in
 def check_logged_in(func):
     @wraps(func)
     def wrapped_function(*args, **kwargs):
@@ -28,54 +29,61 @@ def check_logged_in(func):
             return render_template('no-login.html')
     return wrapped_function
 
-
+# Renders the home.html page
 @app.route('/')
 @check_logged_in
 def home():
     return render_template('home.html', username=session['user-name'])
 
-
+# Provides paths for accessing the register page and for attempting to register
 @app.route('/register', methods=["GET", "POST"])
 def register():
-    if request.method == "GET":
-        return render_template('register.html')
-    elif request.method == "POST":
-        username = request.form['userid']
-        user = mongo.db.user_info.find_one({
-            'username': username})
-        if user is None:
-            password = request.form['password']
-            _hash = pbkdf2_sha256.hash(password)
-            mongo.db.user_info.insert_one({
-                'username': username,
-                'password': _hash
-            })
-            return redirect(url_for('login'))
-        else:
-            return render_template('register.html',
-                                   error="User already exists")
+    if 'user-id' in session:
+        return redirect(url_for('home'))
+    else:
+        if request.method == "GET":
+            return render_template('register.html')
+        elif request.method == "POST":
+            username = request.form['userid']
+            user = mongo.db.user_info.find_one({
+                'username': username})
+            if user is None:
+                password = request.form['password']
+                _hash = pbkdf2_sha256.hash(password)
+                mongo.db.user_info.insert_one({
+                    'username': username,
+                    'password': _hash
+                })
+                flash('New user successfully created')
+                return redirect(url_for('login'))
+            else:
+                return render_template('register.html',
+                                       error="User already exists")
 
-
+# Provides paths for accessing login page and for logging into website
 @app.route('/login', methods=["GET", "POST"])
 def login():
-    if request.method == "GET":
-        return render_template('login.html')
-    elif request.method == "POST":
-        username = request.form['userid']
-        user = mongo.db.user_info.find_one({'username': username})
-        user_password = user['password']
-        form_password = request.form['password']
-        if pbkdf2_sha256.verify(form_password, user_password):
-            session['logged-in'] = True
-            session['user-name'] = username
-            session['user-id'] = str(user['_id'])
-        else:
-            return render_template('login.html',
-                                   error="Username and/or password incorrect")
-        flash('You were successfully logged in')
+    if 'user-id' in session:
         return redirect(url_for('home'))
+    else:
+        if request.method == "GET":
+            return render_template('login.html')
+        elif request.method == "POST":
+            username = request.form['userid']
+            user = mongo.db.user_info.find_one({'username': username})
+            user_password = user['password']
+            form_password = request.form['password']
+            if pbkdf2_sha256.verify(form_password, user_password):
+                session['logged-in'] = True
+                session['user-name'] = username
+                session['user-id'] = str(user['_id'])
+            else:
+                return render_template('login.html',
+                                       error="Incorrect credentials")
+            flash('You were successfully logged in')
+            return redirect(url_for('home'))
 
-
+# Logs user out
 @app.route('/logout')
 @check_logged_in
 def logout():
@@ -84,14 +92,14 @@ def logout():
     session.pop('user-id', None)
     return redirect(url_for('home'))
 
-
+# Renders create.html page where users first choose mad lib template to use
 @app.route('/create')
 @check_logged_in
 def create():
     return render_template('create.html',
                            skeletons=mongo.db.mad_libz_templates.find())
 
-
+# Page accessed after choosing theme, where user can give word inputs
 @app.route('/insert_words', methods=['GET'])
 @check_logged_in
 def insert_words():
@@ -101,7 +109,7 @@ def insert_words():
                                                    })
     return render_template('insert-words.html', mad_lib=mad_lib)
 
-
+# Adds user input data into the MongoDB database
 @app.route('/push_data/<template_id>', methods=['POST'])
 @check_logged_in
 def push_data(template_id):
@@ -114,7 +122,7 @@ def push_data(template_id):
     return redirect(url_for('display_result', inserted_id=inserted_id,
                             skeleton_id=template_id))
 
-
+# Renders result of chosen theme with user inputs zipped into templates
 @app.route('/display_result/<inserted_id>/<skeleton_id>')
 @check_logged_in
 def display_result(inserted_id, skeleton_id):
@@ -139,7 +147,7 @@ def display_result(inserted_id, skeleton_id):
         return render_template('home.html',
                                invalid_user="Sorry, invalid user")
 
-
+# Renders library.html page, displaying all Mad Libs stored in the database
 @app.route('/display_all')
 @check_logged_in
 def display_all():
@@ -162,7 +170,7 @@ def display_all():
     return render_template('library.html', user_inputs=user_inputs,
                            user_input=user_input)
 
-
+# Renders page where users can change prefilled input fields (prefilled with latest data)
 @app.route('/edit/<mad_lib_id>')
 @check_logged_in
 def edit(mad_lib_id):
@@ -182,7 +190,7 @@ def edit(mad_lib_id):
         return render_template('home.html',
                                invalid_user="Sorry, invalid user")
 
-
+# Updates data/user input provided on the Mad Lib and redirects to library.html
 @app.route('/update/<mad_lib_id>', methods=['POST'])
 @check_logged_in
 def update(mad_lib_id):
@@ -200,7 +208,7 @@ def update(mad_lib_id):
         return render_template('home.html',
                                invalid_user="Sorry, invalid user")
 
-
+# Delete route that removes record from database
 @app.route('/delete/<mad_lib_id>')
 @check_logged_in
 def delete(mad_lib_id):
@@ -214,6 +222,7 @@ def delete(mad_lib_id):
                                invalid_user="Sorry, invalid user")
 
 
+# Defines IP address and PORT of application
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
