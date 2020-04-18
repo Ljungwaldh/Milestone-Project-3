@@ -15,11 +15,11 @@
                     {% endwith %}
                         <form class="form-signin" method="POST" action="{{url_for('login')}}">
                             <div class="form-label-group">
-                                <input type="text" name="userid" class="form-control" id="inputUsername" placeholder="Username" required autofocus>
+                                <input type="text" maxlength="40" name="userid" class="form-control" id="inputUsername" placeholder="Username" required autofocus>
                                 <label for="inputUsername">Username</label>
                             </div>
                             <div class="form-label-group">
-                                <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password" required>
+                                <input type="password" maxlength="15" name="password" class="form-control" id="inputPassword" placeholder="Password" required>
                                 <label for="inputPassword">Password</label>
                             </div>
                             <button class="btn btn-lg btn-secondary btn-block text-uppercase" type="submit">Log in</button>
