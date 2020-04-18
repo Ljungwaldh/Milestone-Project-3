@@ -207,3 +207,29 @@ As with the email authentication feature, this idea was considered in the later 
 
 #### 7. Admin account
 An admin account may be useful in order to have better control of the site’s contents, giving full access rights to delete records if deemed necessary (in the case of, say, malicious/indecent/spam records were being created). While this security feature for bad input isn’t the full proof solution, it could provide the site owner some greater control of website content without having to manipulate records in the database
+
+### Database Choice
+For this project a requirement is that we use the non-relational database MongoDB. While using a relational database such as MySQL would’ve been beneficial to use since my data collections connect with one another, the same end result is achievable by creating logic that submits id values from one collection into another in order to create data relations necessary for the application.
+
+### Data Storage Types
+The types of data used for this project, that was stored in the MongoDB database, included:
+- ObjectID
+- Array
+- String
+
+### Collections Data Structure
+The Mad Libz website made use of 3 database collections, these being:
+- mad_libz_input (User input)
+- mad_libz-templates (Mad Lib templates)
+- user_info (User Information)
+
+These are described in the visual below. With each collection entity, the first column indicates the field name, second column indicates expected type of data inside, and the third column indicates the official data type.
+
+(url for image of data schema)
+
+Here are some examples of how the data looks inside the database:
+(link to json file for user input)
+(link to json file for templates)
+(link to json file for user info)
+
+The templates collection stays static, and its ID is passed into a user input document once a user has created a mad lib. This template ID being passed in helps to build the form users are redirected to in order to get the relevant text input fields and prompts so that the resulting mad lib is given the most relevant information/words as possible. When a new user signs up/registers to the website with their username and password, a new document storing this data, along with a generated user ID, is inserted into the user info collection. This user ID is also passed into a user input document when the user creates a new mad lib (record). This helps to restrict other users from editing and deleting that mad lib record which they did not create.
