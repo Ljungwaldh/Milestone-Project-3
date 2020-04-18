@@ -64,3 +64,146 @@ As a starting point, and perhaps subjective opinion of the developer, the projec
 - Making sure I had a hero/background image that would match both the website’s theme of humour as well as the colour scheme decided upon. This led to using the image visualised below:
 
 (add image)
+
+### Wireframes
+
+(insert wireframes here)
+
+## Features
+
+### Existing Features
+
+#### 1. Consistent Features throughout
+
+- Navbar
+
+- Navbar that was conditional based on if the user was logged in or not. If a user was not logged in, the following options were available
+	1. Log In
+	2. Sign Up
+	3. Website logo, which would always redirect users to the landing page (or welcome page if logged in)
+
+- When users were logged in, they can navigate through the following options:
+    1. Home
+    2. Create Mad Lib
+    3. View all Mad Libz
+    4. Logout
+
+- Python logic is in place to check when a user is logged in or not, in which case it displays the navbar options dynamically based on if a user is logged in or not.
+
+- For smaller screens, the navbar turns into a burger icon dropdown icon, where clicking on it will present the options.
+
+- The navbar is sticky and sticks to the top of the page when users scroll. This is to ensure that they always have convenient navigation available at all times. Since the navbar is also slightly transparent and blends with the background, it doesn’t disturb the view of the user when they are going through page content
+
+- Footer
+	- A simple footer can be found in all pages, with the website logo text, a disclaimer as to who produced the website, a contact email address, and social media links via clickable icons
+	- The footer is sticky on pages where the user is logged in, which is fixed to the bottom of the page until users scroll all the way up to the top of the page. This is to ensure that users have contact/relevant social media access conveniently at hand at all times
+
+- User feedback
+	- Python logic, along with flask (flash messages), has been implemented to give users a simple text message feedback on the screen when certain scenarios happen. These include:
+		- Trying to register with a username that already exists, in which case users are redirected to the register page with the message ‘User already exists’
+		-When a user successfully signs up with a unique username, they are redirected to the Log In page with the message ‘New user successfully created’
+		- Logging in with a username and/or password that is incorrect, whereby the user is redirected back to the login page with the message ‘Incorrect credentials’
+		- When a user has successfully logged in, the home page display a text below the header with the message ‘You were successfully logged in’
+		- Trying to access an edit or delete function of a given user’s mad lib (record) when the user trying to access it isn’t the creator of it, users are redirected back to the home page with the text message ‘Sorry, invalid user’
+		- When a user has updated/deleted a record of theirs (that they created), the user is redirected to the library page with the message appearing under the header ‘Mad Lib updated’ or ‘Mad Lib deleted’
+
+- Security
+	- A login system is in place, where it stores a user ID, the username, and the user’s password. The password is hashed using the passlib package to ensure high security on passwords stored
+	- As part of the login system, user sessions are used to allow/not allow users to carry out certain actions/access certain pages. These include being able to access certain navigation bar items or being able to access update and delete functions of a record the user did not create
+	- The repository for this project utilizes the .gitignore file to hide an extensive amount of variables that, if exposed, could compromise user and database data. I used the .gitignore file from this example Github repository to ensure as high security as possible on my repository, alongside additional files that needed to be hidden in relation to the database
+
+- Hero Image/Background
+	- I made sure to choose, as part of my Design Choices, a hero/background image that suits the website’s goals and also can go with the decided-on colour palette. I made sure this image was visible throughout to give the consistency and dominant style of the website overall
+
+- Colourful Pink/Orange buttons
+	-These buttons are present throughout the majority of pages to help direct users to relevant website locations. The colours used for these are specifically chosen to make them easily identifiable for users to intuitively understand that these provide users with actions
+
+##### Differentiation(s) from Wireframes
+- Login system was not considered during the planning phase, but was rather a feature implemented due to the developer judging that there was time for this. This differs from the Woreframes then in terms of:
+	- User Feedback
+	- Security features
+	- Navbar Menu Items
+
+- Contact page/link was removed from the navbar menu, and instead the developer opted for a Footer that would contain contact information (email, social media links)
+
+#### 2. Landing page (not logged in)
+
+- User is presented with initially a logo text and slogan to instantly grab the user’s attention. This is followed by a ‘See More’ button which scrolls the user down to the information section
+- The information formats images and text items to alternative sides as the user scrolls down, with content describing what Mad Libs (the game) is, how the website works, and how to get started
+- Two buttons at the bottom of the page for signing up or for logging in are presented
+
+##### Differentiation(s) from Wireframes
+- The developer had not considered a login system before, so the Log In and Sign Up buttons are additional
+- During the development, it was advised that one should have some content that describes what Mad Libs are, so the developer used this landing page as an opportunity to do that with the information section that is accessed either by scrolling down or by clicking the ‘Learn More’ button
+
+#### 4. Sign Up/Log In pages
+- These two pages follow an almost identical style to keep a consistent style for authentication forms. The form is a simple card with two input fields and a button to submit the form
+- The Sign Up form asks for users to create a user with a username and password. Once done successfully, the user is redirected to the Log In page and form
+- The Log In page form asks users for their username and password (which they have signed up with), and if done correctly they are redirected to Home page. If unsuccessful, they are redirected back to the Log In page
+- All inputs on these pages are required fields, preventing new/current users from submitting the form with empty fields
+
+##### Differentiation(s) from Wireframes
+- A login system was not considered during the phase of building the wireframes but rather was developed as an extra feature where the developer found time for it
+
+#### 5. Home page (logged in)
+- This page presents two circle images above their respective buttons, where users can choose to either ‘Create a Mad Lib’ or ‘View All Mad Libz’. Content is centered to make it easier to grab the user’s attention. These options stack on top of each other in smaller screens sizes
+
+##### Differentiation(s) from Wireframes
+- Home page for logged in users was not considered due to the login system not being considered earlier in the planning phase.
+
+#### 6. Create Mad Lib
+- User is presented with a circular image with a select dropdown menu, where users can pick their ‘Mad Lib Theme’ i.e. the template that will be used that their chosen words will be zipped in to. The selection can be confirmed with the ‘Next button’
+- A complementary text is provided below the header to guide users who want to test out the functionality can best do so with the ‘Love Poem’ theme (this being the shortest/easiest one to fill out)
+
+##### Differentiation(s) from Wireframes
+- The developer opted for a select with dropdown options instead of a carousel. Reasons for this included time constraints on the project, as well as the fact that, with more and more themes potentially built into the database/website, the more difficult/time consuming it would be for users to conveniently navigate through the different options effectively
+
+#### 7. Insert Words/Edit Words
+- User is provided a simple card form with text inputs to fill input. The placeholders within each text input provide a prompt for what type of word/s) they should type in for the input. Below these text inputs is the button to ‘Generate Mad Lib’
+- In the case of the Edit page (which is accessed via the edit button on a given Mad Lib the user has created), the format and styling is identical, only that the input fields are prefilled with the latest inputs typed in
+
+##### Differentiation(s) from Wireframes
+- No major deviations from the wireframe for this page
+
+#### 8. Results
+- This page displays the generated Mad Lib, where the user inputs are placed within the template/theme chosen to create a story/text. This is presented in a card with the username of the user who created it, the title of the Mad Lib, and the text
+- The user has 3 buttons that they can use, ‘Create Another’, ‘Delete’ and ‘See All Mad Libz’. The ‘Create Another’ button directs users back the the create page where they can choose a theme, the ‘Delete’ button deletes the entry from the library and users are redirected the the library ‘View All Mad Libz’ page, while the ‘View All Mad Libz’ button redirects users to the library page
+
+##### Differentiation(s) from Wireframes
+- The developer included the Delete button here in case the user wished to immediately delete the recently created record. This might be the case if the user is dissatisfied with the generated Mad Lib
+
+#### 9. View All Mad Libz (Library) page
+- In a similar style to the results page, every Mad Lib record is displayed in a card, where two in each row is presented on larger screens, while on mobile this witches to one per row
+- The top of the page has a clear header, where any user feedback messages (based on user actions) are displayed below this
+- Each card also contains two buttons, ‘Edit’ and ‘Delete’, which appear and function only for users who have created the Mad Lib in question
+
+##### Differentiation(s) from Wireframes
+- Did not include statistics/graphs dashboard on words used. This was due to time constraints and was deemed not a required feature for a ready-to-use application at this stage. This can be, in the future, achieved by using the ChartJS API to visualize data should the developer which to implement this at a later point in time
+
+### Features Left to Implement
+
+#### 1. Private Group Sessions
+Group session feature, where a user could create a private session with other users/friends that would only display the Mad Libs this group creates within their session. This would require setting up another collection in the database with user types (needing a group admin and regular users), a group ID (so that non-group users cannot access the group they are not associated with/invited to), and additional code to create a new decorator or elaborate on the current one in place. This would be a complex feature to implement, and with the project time scope in mind, was not realistic to implement at this point
+
+#### 2. CRUD Operations for Mad Lib Templates
+Users being able to create, read, update and delete their own Mad Lib templates. This would require creating the relevant functions for this as well as finding the right form structure and process to be able to obtain user template data in the correct format for the database. The developer deemed this a feature that could be included should there be time leftover after implementing the log in system and front-end. However, this proved to not be the case and therefore can be seen as a possible feature to implement after the time scope for Code Institute
+
+#### 3. Javascript/jQuery website beautification
+Beautified user feedback using Javascript/jQuery could have improved the user experience in terms of adding greater clarity and smoother transitions in regards to the different CRUD operations performed. Since this isn’t a requirement of the project, the developer deemed this as something that could be improved after the Code Institute time scope in order to focus more time on security and error handling features
+
+#### 4. Statistics/Graph Dashboard
+- Statistics/graphs dashboard for visualizing popular words and Mad Lib templates used overall, aggregating all the data and presenting it to users as interesting/fun facts. Due to the short time scope of this project, this was deemed as a feature that would be nice to have but not essential for a well-functioning application. This could be easily achieved using the ChartJS API in order to visualize the data in a dashboard
+
+#### 5. Email Authentication
+As an extra security feature, have email authentication as an extra step to validate the user. This is a thought for a future development that has been considered at a late stage in developing the project and therefore unrealistic to implement in terms of time and complexity
+
+#### 6. Search function in library page
+Since the Mad Lib entries may potentially build up over time, it would be useful for users to be able to search for Mad Libs based on:
+- Mad Lib Title (template)
+- Username
+- Mad Libs that user has created themselves
+
+As with the email authentication feature, this idea was considered in the later stages of development of this project and therefore will be considered for future development outside of the Code Institute’s time scope
+
+#### 7. Admin account
+An admin account may be useful in order to have better control of the site’s contents, giving full access rights to delete records if deemed necessary (in the case of, say, malicious/indecent/spam records were being created). While this security feature for bad input isn’t the full proof solution, it could provide the site owner some greater control of website content without having to manipulate records in the database
