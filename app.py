@@ -40,48 +40,52 @@ def home():
 def register():
     if 'user-id' in session:
         return redirect(url_for('home'))
-    else:
-        if request.method == "GET":
-            return render_template('register.html')
-        elif request.method == "POST":
-            username = request.form['userid']
-            user = mongo.db.user_info.find_one({
-                'username': username})
-            if user is None:
-                password = request.form['password']
-                _hash = pbkdf2_sha256.hash(password)
-                mongo.db.user_info.insert_one({
-                    'username': username,
-                    'password': _hash
-                })
-                flash('New user successfully created')
-                return redirect(url_for('login'))
-            else:
-                return render_template('register.html',
-                                       error="User already exists")
 
-# Provides paths for accessing login page and for logging into website
+    if request.method == "GET":
+        return render_template('register.html')
+
+    if request.method == "POST":
+        username = request.form['userid']
+        user = mongo.db.user_info.find_one({
+            'username': username})
+        if user is None:
+            password = request.form['password']
+            _hash = pbkdf2_sha256.hash(password)
+            mongo.db.user_info.insert_one({
+                'username': username,
+                'password': _hash
+            })
+            flash('New user successfully created')
+            return redirect(url_for('login'))
+
+        return render_template('register.html',
+                               error="User already exists")
+
+
 @app.route('/login', methods=["GET", "POST"])
 def login():
+    """Provide paths for accessing login page and for logging into website"""
     if 'user-id' in session:
         return redirect(url_for('home'))
+    if request.method == "GET":
+        return render_template('login.html')
+    # We know it's a POST request
+    username = request.form['userid']
+    user = mongo.db.user_info.find_one({'username': username})
+    if user is None:
+        return render_template('login.html',
+                               error="Incorrect credentials")
+    user_password = user['password']
+    form_password = request.form['password']
+    if pbkdf2_sha256.verify(form_password, user_password):
+        session['logged-in'] = True
+        session['user-name'] = username
+        session['user-id'] = str(user['_id'])
+        flash('You were successfully logged in')
+        return redirect(url_for('home'))
     else:
-        if request.method == "GET":
-            return render_template('login.html')
-        elif request.method == "POST":
-            username = request.form['userid']
-            user = mongo.db.user_info.find_one({'username': username})
-            user_password = user['password']
-            form_password = request.form['password']
-            if pbkdf2_sha256.verify(form_password, user_password):
-                session['logged-in'] = True
-                session['user-name'] = username
-                session['user-id'] = str(user['_id'])
-            else:
-                return render_template('login.html',
-                                       error="Incorrect credentials")
-            flash('You were successfully logged in')
-            return redirect(url_for('home'))
+        return render_template('login.html',
+                               error="Incorrect credentials")
 
 # Logs user out
 @app.route('/logout')
