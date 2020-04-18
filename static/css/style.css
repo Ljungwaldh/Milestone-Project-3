@@ -3,7 +3,7 @@ html {
 }
 
 body {
-  font-family: 'Lato';
+  font-family: 'Lato', sans-serif;
 }
 
 h1,
@@ -12,7 +12,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Catamaran';
+  font-family: 'Catamaran', sans-serif;
   font-weight: 800 !important;
 }
 
@@ -297,7 +297,6 @@ header.masthead .masthead-content .masthead-subheading {
     box-shadow: inset 0 0 0 1000px rgba(0,0,0,.4);
 }
 
-
 /* Mad Lib Card */
 .result-card {
     background: rgba(233, 138, 21, .95);
@@ -334,9 +333,6 @@ footer .container-fluid {
     color: #fafafa;
     background: rgba(8, 8, 8, .9);
     transition: all 0.35s ease-in-out;
-    -moz-transition: all 0.35s ease-in-out;
-    -webkit-transition: all 0.35s ease-in-out;
-    -o-transition: all 0.35s ease-in-out;
 }
 
 .social-links li a i:hover {
