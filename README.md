@@ -377,7 +377,6 @@ To deploy Mad Libz to heroku, follow these steps:
 
 | Key | Value |
  --- | ---
-DEBUG | FALSE
 IP | 0.0.0.0
 MONGO_URI | `mongodb+srv://<username>:<password>@<cluster_name>-qtxun.mongodb.net/<database_name>?retryWrites=true&w=majority`
 PORT | 5000
