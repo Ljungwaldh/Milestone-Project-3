@@ -1,0 +1,8 @@
+[{
+    "_id": {
+        "$oid": "<objectId>"
+    },
+    "title": "<string>",
+    "script": ["<string-1>", "<string-2>", "<string-n>"],
+    "descriptors": ["<string-1>", "<string-2>", "<string-n>"]
+}]

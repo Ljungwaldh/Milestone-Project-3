@@ -291,7 +291,7 @@ git clone https://github.com/Ljungwaldh/Milestone-Project-3
 ```
 python3 -m .venv venv
 ```  
-_NOTE: Your Python command may differ, such as python or py_
+NOTE: Your Python command may differ, such as python or py_
 
 4. Activate the .venv with the command:
 ```

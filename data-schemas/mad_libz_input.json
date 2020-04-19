@@ -1,0 +1,10 @@
+[{
+    "_id": {
+        "$oid": "<objectId>"
+    },
+    "mad_lib_id": {
+        "$oid": "<objectId>"
+    },
+    "words": ["<string-1>", "<string-2>", "<string-n>"],
+    "creatorID": "<string>"
+}]
