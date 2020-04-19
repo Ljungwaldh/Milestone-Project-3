@@ -109,7 +109,7 @@ def create():
     return render_template('create.html',
                            skeletons=mongo.db.mad_libz_templates.find())
 
-# 
+
 @app.route('/insert_words', methods=['GET'])
 @check_logged_in
 def insert_words():
@@ -247,4 +247,4 @@ def delete(mad_lib_id):
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
-            debug=True)
+            debug=False)

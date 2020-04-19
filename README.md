@@ -57,17 +57,22 @@ My design choices were motivated by wanting to create a website that felt both f
 
 ### Colours
 As a starting point, and perhaps subjective opinion of the developer, the project would get inspiration from two sources:
-- The use of an orange colour, which can be associated with energy/fun, which could be used as a starting point for building the colour palette. Through using Coolers, I generated the colour scheme visualised below that I would take inspiration from for the different colours I would use:
+- The use of an orange colour, which can be associated with energy/fun, which could be used as a starting point for building the colour palette. Through using Coolors, I generated the colour scheme visualised below that I would take inspiration from for the different colours I would use:
 
-(add image)
+[Coolors colour palette](https://ibb.co/2hW0BzS)
 
-- Making sure I had a hero/background image that would match both the website’s theme of humour as well as the colour scheme decided upon. This led to using the image visualised below:
-
-(add image)
+- Making sure I had a hero/background image that would match both the website’s theme of humour as well as the colour scheme decided upon. I opted in the end for this image I found in [Pexels](https://www.pexels.com/photo/laugh-neon-light-signage-turned-on-1115680/)
 
 ### Wireframes
 
-(insert wireframes here)
+[Landing/Home Page](https://ibb.co/9GXJgWk)
+[Idea Statement](https://ibb.co/jDMRMhh)
+[Choose Theme](https://ibb.co/rwV7J5x)
+[Insert Words](https://ibb.co/1bZdCGG)
+[Results](https://ibb.co/3sMbNsC)
+[Library 1](https://ibb.co/mXHBqPT)
+[Library 2](https://ibb.co/bzdZsDr)
+[Contact](https://ibb.co/ZVHrbSM)
 
 ## Features
 
@@ -131,6 +136,10 @@ As a starting point, and perhaps subjective opinion of the developer, the projec
 - The information formats images and text items to alternative sides as the user scrolls down, with content describing what Mad Libs (the game) is, how the website works, and how to get started
 - Two buttons at the bottom of the page for signing up or for logging in are presented
 
+[Landing page (not logged in) 1](https://ibb.co/xXnzLdv)
+[Landing page (not logged in) 1](https://ibb.co/NrzPDqF)
+[Landing page (not logged in) 1](https://ibb.co/FYqjCsy)
+
 ##### Differentiation(s) from Wireframes
 - The developer had not considered a login system before, so the Log In and Sign Up buttons are additional
 - During the development, it was advised that one should have some content that describes what Mad Libs are, so the developer used this landing page as an opportunity to do that with the information section that is accessed either by scrolling down or by clicking the ‘Learn More’ button
@@ -141,11 +150,19 @@ As a starting point, and perhaps subjective opinion of the developer, the projec
 - The Log In page form asks users for their username and password (which they have signed up with), and if done correctly they are redirected to Home page. If unsuccessful, they are redirected back to the Log In page
 - All inputs on these pages are required fields, preventing new/current users from submitting the form with empty fields
 
+[Register 1](https://ibb.co/dDKwnXc)
+[Register 2](https://ibb.co/G3DdcZ2)
+[Register 3](https://ibb.co/BKQTn55)
+[Login 1](https://ibb.co/DYp67wk)
+[Login 2](https://ibb.co/cbsqBKK)
+
 ##### Differentiation(s) from Wireframes
 - A login system was not considered during the phase of building the wireframes but rather was developed as an extra feature where the developer found time for it
 
 #### 5. Home page (logged in)
 - This page presents two circle images above their respective buttons, where users can choose to either ‘Create a Mad Lib’ or ‘View All Mad Libz’. Content is centered to make it easier to grab the user’s attention. These options stack on top of each other in smaller screens sizes
+
+[Logged in and on Home page](https://ibb.co/5LshhR4)
 
 ##### Differentiation(s) from Wireframes
 - Home page for logged in users was not considered due to the login system not being considered earlier in the planning phase.
@@ -154,12 +171,20 @@ As a starting point, and perhaps subjective opinion of the developer, the projec
 - User is presented with a circular image with a select dropdown menu, where users can pick their ‘Mad Lib Theme’ i.e. the template that will be used that their chosen words will be zipped in to. The selection can be confirmed with the ‘Next button’
 - A complementary text is provided below the header to guide users who want to test out the functionality can best do so with the ‘Love Poem’ theme (this being the shortest/easiest one to fill out)
 
+[Choose Theme 1](https://ibb.co/dpfNtvw)
+[Choose Theme 2](https://ibb.co/gzwwzP1)
+
 ##### Differentiation(s) from Wireframes
 - The developer opted for a select with dropdown options instead of a carousel. Reasons for this included time constraints on the project, as well as the fact that, with more and more themes potentially built into the database/website, the more difficult/time consuming it would be for users to conveniently navigate through the different options effectively
 
 #### 7. Insert Words/Edit Words
 - User is provided a simple card form with text inputs to fill input. The placeholders within each text input provide a prompt for what type of word/s) they should type in for the input. Below these text inputs is the button to ‘Generate Mad Lib’
 - In the case of the Edit page (which is accessed via the edit button on a given Mad Lib the user has created), the format and styling is identical, only that the input fields are prefilled with the latest inputs typed in
+
+[Input Words 1](https://ibb.co/qxsCv1X)
+[Input Words 2](https://ibb.co/yy7FHFH)
+[Edit Words 1](https://ibb.co/tJg4KHb)
+[Edit Words 2](https://ibb.co/82fkkSv)
 
 ##### Differentiation(s) from Wireframes
 - No major deviations from the wireframe for this page
@@ -168,6 +193,8 @@ As a starting point, and perhaps subjective opinion of the developer, the projec
 - This page displays the generated Mad Lib, where the user inputs are placed within the template/theme chosen to create a story/text. This is presented in a card with the username of the user who created it, the title of the Mad Lib, and the text
 - The user has 3 buttons that they can use, ‘Create Another’, ‘Delete’ and ‘See All Mad Libz’. The ‘Create Another’ button directs users back the the create page where they can choose a theme, the ‘Delete’ button deletes the entry from the library and users are redirected the the library ‘View All Mad Libz’ page, while the ‘View All Mad Libz’ button redirects users to the library page
 
+[Results](https://ibb.co/CK350T8)
+
 ##### Differentiation(s) from Wireframes
 - The developer included the Delete button here in case the user wished to immediately delete the recently created record. This might be the case if the user is dissatisfied with the generated Mad Lib
 
@@ -175,6 +202,9 @@ As a starting point, and perhaps subjective opinion of the developer, the projec
 - In a similar style to the results page, every Mad Lib record is displayed in a card, where two in each row is presented on larger screens, while on mobile this witches to one per row
 - The top of the page has a clear header, where any user feedback messages (based on user actions) are displayed below this
 - Each card also contains two buttons, ‘Edit’ and ‘Delete’, which appear and function only for users who have created the Mad Lib in question
+
+[Library](https://ibb.co/60rZTGP)
+[Delete Function](https://ibb.co/9pSRqPd)
 
 ##### Differentiation(s) from Wireframes
 - Did not include statistics/graphs dashboard on words used. This was due to time constraints and was deemed not a required feature for a ready-to-use application at this stage. This can be, in the future, achieved by using the ChartJS API to visualize data should the developer which to implement this at a later point in time
@@ -191,7 +221,7 @@ Users being able to create, read, update and delete their own Mad Lib templates.
 Beautified user feedback using Javascript/jQuery could have improved the user experience in terms of adding greater clarity and smoother transitions in regards to the different CRUD operations performed. Since this isn’t a requirement of the project, the developer deemed this as something that could be improved after the Code Institute time scope in order to focus more time on security and error handling features
 
 #### 4. Statistics/Graph Dashboard
-- Statistics/graphs dashboard for visualizing popular words and Mad Lib templates used overall, aggregating all the data and presenting it to users as interesting/fun facts. Due to the short time scope of this project, this was deemed as a feature that would be nice to have but not essential for a well-functioning application. This could be easily achieved using the ChartJS API in order to visualize the data in a dashboard
+Statistics/graphs dashboard for visualizing popular words and Mad Lib templates used overall, aggregating all the data and presenting it to users as interesting/fun facts. Due to the short time scope of this project, this was deemed as a feature that would be nice to have but not essential for a well-functioning application. This could be easily achieved using the ChartJS API in order to visualize the data in a dashboard
 
 #### 5. Email Authentication
 As an extra security feature, have email authentication as an extra step to validate the user. This is a thought for a future development that has been considered at a late stage in developing the project and therefore unrealistic to implement in terms of time and complexity
@@ -206,6 +236,9 @@ As with the email authentication feature, this idea was considered in the later 
 
 #### 7. Admin account
 An admin account may be useful in order to have better control of the site’s contents, giving full access rights to delete records if deemed necessary (in the case of, say, malicious/indecent/spam records were being created). While this security feature for bad input isn’t the full proof solution, it could provide the site owner some greater control of website content without having to manipulate records in the database
+
+#### 8. Error page handling
+It is generally good practice to set up a function and page for errors such as Page Error 404 in order to give a friendlier user feedback and direction back to somewhere in the website that is accessible. Due to the short time scope of the project, the developer was unable to implement this feature before the submission of this project to the Code Institute but will strongly consider implementing this in future development
 
 ### Database Choice
 For this project a requirement is that we use the non-relational database MongoDB. While using a relational database such as MySQL would’ve been beneficial to use since my data collections connect with one another, the same end result is achievable by creating logic that submits id values from one collection into another in order to create data relations necessary for the application.
@@ -224,41 +257,42 @@ The Mad Libz website made use of 3 database collections, these being:
 
 These are described in the visual below. With each collection entity, the first column indicates the field name, second column indicates expected type of data inside, and the third column indicates the official data type.
 
-(url for image of data schema)
+[Data Schema by Lucid Charts](https://www.lucidchart.com/publicSegments/view/e78b678b-4e07-4a05-ad5e-94c21b488174/image.png)
 
 Here are some examples of how the data looks inside the database:
-(link to json file for user input)
-(link to json file for templates)
-(link to json file for user info)
+[Data schema example for user_info collection](/data-schemas/user_info.json)
+[Data schema example for mad_libz_input collection](/data-schemas/mad_libz_input.json)
+[Data schema example for mad_libz_templates collection](/data-schemas/mad_libz_templates.json)
 
 The templates collection stays static, and its ID is passed into a user input document once a user has created a mad lib. This template ID being passed in helps to build the form users are redirected to in order to get the relevant text input fields and prompts so that the resulting mad lib is given the most relevant information/words as possible. When a new user signs up/registers to the website with their username and password, a new document storing this data, along with a generated user ID, is inserted into the user info collection. This user ID is also passed into a user input document when the user creates a new mad lib (record). This helps to restrict other users from editing and deleting that mad lib record which they did not create.
 
 ## Technologies Used
 
 ### Tools and Libraries
-* [JQuery][] - used as part of being able to initialize Bootstrap components
-* [GitPod][] - The developer used this tool as their IDE when building this project
-* [Bootstrap][] - Utilized to simply html structure of website and responsiveness of it. [Popper][] also used to be able to enable some Bootstrap functionality
-* [GitHub][] - This project used GitHub to be able to store the project remotely
-* [Git][] - used for version control of the project
-* [FontAwesome][] - Icons in the footer section for social media links coming from this resource
-* [MongoDB.Atlas][] - Used this non-relational cloud database to store the data used for this website
-* [Google Fonts][] - Used Catamaran and Lato fonts for text content
-* [PyMongo][] - Provides connection between python and MongoDB
-* [Flask][] - to be able to construct and render templates into html using python
-* [Jinja][] - helps to smoothly present database data and any other variables created in the backend to the frontend
-* [Imgbb][] - Used to host my images that I would link to to my README file. Experienced issues previously with Github failing to load images that are stored in the repository, hence why this solution is used instead
-* [PIP] - Needed in order to install packages/tools into workspace
-* [Passlib][] - Package installed in order to hash passwords that are stored into the database
-* [Coolers][] - for providing a colour palette based off one colour that was intended to be used
-* [RandomKeygen][] - efficient solution to generate a SECRET key for securing hashed password stored in the database
+* [JQuery](https://jquery.com) - used as part of being able to initialize Bootstrap components
+* [GitPod](https://gitpod.io/) - The developer used this tool as their IDE when building this project
+* [Bootstrap](https://getbootstrap.com/) - Utilized to simply html structure of website and responsiveness of it. [Popper](https://popper.js.org/) also used to be able to enable some Bootstrap functionality
+* [GitHub](https://github.com/) - This project used GitHub to be able to store the project remotely
+* [Git](https://gist.github.com/derhuerst/1b15ff4652a867391f03) - used for version control of the project
+* [FontAwesome](https://fontawesome.com/) - Icons in the footer section for social media links coming from this resource
+* [MongoDB.Atlas](https://www.mongodb.com/cloud/atlas) - Used this non-relational cloud database to store the data used for this website
+* [Google Fonts](https://fonts.google.com/) - Used Catamaran and Lato fonts for text content
+* [PyMongo](https://pymongo.readthedocs.io/en/stable/) - Provides connection between python and MongoDB
+* [Flask](https://flask.palletsprojects.com/en/1.1.x/) - to be able to construct and render templates into html using python
+* [Jinja](https://jinja.palletsprojects.com/en/2.11.x/) - helps to smoothly present database data and any other variables created in the backend to the frontend
+* [Imgbb](https://imgbb.com) - Used to host my images that I would link to to my README file. Experienced issues previously with Github failing to load images that are stored in the repository, hence why this solution is used instead
+* [PIP](https://pip.pypa.io/en/stable/installing/) - Needed in order to install packages/tools into workspace
+* [Passlib](https://passlib.readthedocs.io/en/stable/) - Package installed in order to hash passwords that are stored into the database
+* [Coolers](https://coolors.co/) - for providing a colour palette based off one colour that was intended to be used
+* [RandomKeygen](https://randomkeygen.com/) - efficient solution to generate a SECRET key for securing hashed password stored in the database
+* [Lucid Chart](https://www.lucidchart.com/pages/) - Used to create data schema diagram
 
 ### Languages
 This project predominantly uses HTML, CSS and Python programming languages. While it would be considered a strong addition to include Javascript for this project to improve user experience, there are three reasons why, within the time scope for this project with Code Institute, that it does not include any. These include:
  - Majority of focus was placed on creating features that require python, Flask and Jinja, and as a result, has given limited-to-no time for implementing Javascript into the front end
 - Considering the user stories for this website/application, the aim is to have simplicity, and the website provides this. Also, since the target audience and engagement aims to be fun/casual, it isn’t the highest priority that the user interface is of the highest quality in order to induce a positive experience for users. The developer believes that the functionality itself can provide the /funcomedy experience users are looking for
 - the inclusion of Javascript code is not a requirement for this project in terms of the time scope for Code Institute. While it would be beneficial to include Javascript, the developer has chosen to submit it in a state where it would be easy to implement this kind of code in future development
-- According to the [Progressive Enhancement Methodology][] for web design, it is crucial to ensure that one has built a well functioning website in stages, as well as ‘release early, release often’. In accordance to this methodology, I have looked to tackle the first two layers in securing the HTML and CSS setup is functioning well enough so that, if Javascript would be disabled/fail, the fallback version would still fulfill user needs well. This [article][] also describes what websites could still function well without Javascript, potentially hinting that this methodology is done by the top players in social media/ecommerce industries. 
+- According to the [Progressive Enhancement Methodology](https://www.smashingmagazine.com/2009/04/progressive-enhancement-what-it-is-and-how-to-use-it/) for web design, it is crucial to ensure that one has built a well functioning website in stages, as well as ‘release early, release often’. In accordance to this methodology, I have looked to tackle the first two layers in securing the HTML and CSS setup is functioning well enough so that, if Javascript would be disabled/fail, the fallback version would still fulfill user needs well. This [article][] also describes what websites could still function well without Javascript, potentially hinting that this methodology is done by the top players in social media/ecommerce industries. 
 
 ## Testing
 All information about the testing procedures I conducted can be found here in a separate [testing.md file][]
