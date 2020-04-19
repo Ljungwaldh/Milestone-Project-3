@@ -59,20 +59,20 @@ My design choices were motivated by wanting to create a website that felt both f
 As a starting point, and perhaps subjective opinion of the developer, the project would get inspiration from two sources:
 - The use of an orange colour, which can be associated with energy/fun, which could be used as a starting point for building the colour palette. Through using Coolors, I generated the colour scheme visualised below that I would take inspiration from for the different colours I would use:
 
-[Coolors colour palette](https://ibb.co/2hW0BzS)
+* [Coolors colour palette](https://ibb.co/2hW0BzS)
 
 - Making sure I had a hero/background image that would match both the website’s theme of humour as well as the colour scheme decided upon. I opted in the end for this image I found in [Pexels](https://www.pexels.com/photo/laugh-neon-light-signage-turned-on-1115680/)
 
 ### Wireframes
 
-[Landing/Home Page](https://ibb.co/9GXJgWk)
-[Idea Statement](https://ibb.co/jDMRMhh)
-[Choose Theme](https://ibb.co/rwV7J5x)
-[Insert Words](https://ibb.co/1bZdCGG)
-[Results](https://ibb.co/3sMbNsC)
-[Library 1](https://ibb.co/mXHBqPT)
-[Library 2](https://ibb.co/bzdZsDr)
-[Contact](https://ibb.co/ZVHrbSM)
+* [Landing/Home Page](https://ibb.co/9GXJgWk)
+* [Idea Statement](https://ibb.co/jDMRMhh)
+* [Choose Theme](https://ibb.co/rwV7J5x)
+* [Insert Words](https://ibb.co/1bZdCGG)
+* [Results](https://ibb.co/3sMbNsC)
+* [Library 1](https://ibb.co/mXHBqPT)
+* [Library 2](https://ibb.co/bzdZsDr)
+* [Contact](https://ibb.co/ZVHrbSM)
 
 ## Features
 
@@ -136,9 +136,9 @@ As a starting point, and perhaps subjective opinion of the developer, the projec
 - The information formats images and text items to alternative sides as the user scrolls down, with content describing what Mad Libs (the game) is, how the website works, and how to get started
 - Two buttons at the bottom of the page for signing up or for logging in are presented
 
-[Landing page (not logged in) 1](https://ibb.co/xXnzLdv)
-[Landing page (not logged in) 1](https://ibb.co/NrzPDqF)
-[Landing page (not logged in) 1](https://ibb.co/FYqjCsy)
+* [Landing page (not logged in) 1](https://ibb.co/xXnzLdv)
+* [Landing page (not logged in) 1](https://ibb.co/NrzPDqF)
+* [Landing page (not logged in) 1](https://ibb.co/FYqjCsy)
 
 ##### Differentiation(s) from Wireframes
 - The developer had not considered a login system before, so the Log In and Sign Up buttons are additional
@@ -150,11 +150,11 @@ As a starting point, and perhaps subjective opinion of the developer, the projec
 - The Log In page form asks users for their username and password (which they have signed up with), and if done correctly they are redirected to Home page. If unsuccessful, they are redirected back to the Log In page
 - All inputs on these pages are required fields, preventing new/current users from submitting the form with empty fields
 
-[Register 1](https://ibb.co/dDKwnXc)
-[Register 2](https://ibb.co/G3DdcZ2)
-[Register 3](https://ibb.co/BKQTn55)
-[Login 1](https://ibb.co/DYp67wk)
-[Login 2](https://ibb.co/cbsqBKK)
+* [Register 1](https://ibb.co/dDKwnXc)
+* [Register 2](https://ibb.co/G3DdcZ2)
+* [Register 3](https://ibb.co/BKQTn55)
+* [Login 1](https://ibb.co/DYp67wk)
+* [Login 2](https://ibb.co/cbsqBKK)
 
 ##### Differentiation(s) from Wireframes
 - A login system was not considered during the phase of building the wireframes but rather was developed as an extra feature where the developer found time for it
@@ -162,7 +162,7 @@ As a starting point, and perhaps subjective opinion of the developer, the projec
 #### 5. Home page (logged in)
 - This page presents two circle images above their respective buttons, where users can choose to either ‘Create a Mad Lib’ or ‘View All Mad Libz’. Content is centered to make it easier to grab the user’s attention. These options stack on top of each other in smaller screens sizes
 
-[Logged in and on Home page](https://ibb.co/5LshhR4)
+* [Logged in and on Home page](https://ibb.co/5LshhR4)
 
 ##### Differentiation(s) from Wireframes
 - Home page for logged in users was not considered due to the login system not being considered earlier in the planning phase.
@@ -171,8 +171,8 @@ As a starting point, and perhaps subjective opinion of the developer, the projec
 - User is presented with a circular image with a select dropdown menu, where users can pick their ‘Mad Lib Theme’ i.e. the template that will be used that their chosen words will be zipped in to. The selection can be confirmed with the ‘Next button’
 - A complementary text is provided below the header to guide users who want to test out the functionality can best do so with the ‘Love Poem’ theme (this being the shortest/easiest one to fill out)
 
-[Choose Theme 1](https://ibb.co/dpfNtvw)
-[Choose Theme 2](https://ibb.co/gzwwzP1)
+* [Choose Theme 1](https://ibb.co/dpfNtvw)
+* [Choose Theme 2](https://ibb.co/gzwwzP1)
 
 ##### Differentiation(s) from Wireframes
 - The developer opted for a select with dropdown options instead of a carousel. Reasons for this included time constraints on the project, as well as the fact that, with more and more themes potentially built into the database/website, the more difficult/time consuming it would be for users to conveniently navigate through the different options effectively
@@ -181,10 +181,10 @@ As a starting point, and perhaps subjective opinion of the developer, the projec
 - User is provided a simple card form with text inputs to fill input. The placeholders within each text input provide a prompt for what type of word/s) they should type in for the input. Below these text inputs is the button to ‘Generate Mad Lib’
 - In the case of the Edit page (which is accessed via the edit button on a given Mad Lib the user has created), the format and styling is identical, only that the input fields are prefilled with the latest inputs typed in
 
-[Input Words 1](https://ibb.co/qxsCv1X)
-[Input Words 2](https://ibb.co/yy7FHFH)
-[Edit Words 1](https://ibb.co/tJg4KHb)
-[Edit Words 2](https://ibb.co/82fkkSv)
+* [Input Words 1](https://ibb.co/qxsCv1X)
+* [Input Words 2](https://ibb.co/yy7FHFH)
+* [Edit Words 1](https://ibb.co/tJg4KHb)
+* [Edit Words 2](https://ibb.co/82fkkSv)
 
 ##### Differentiation(s) from Wireframes
 - No major deviations from the wireframe for this page
@@ -257,12 +257,12 @@ The Mad Libz website made use of 3 database collections, these being:
 
 These are described in the visual below. With each collection entity, the first column indicates the field name, second column indicates expected type of data inside, and the third column indicates the official data type.
 
-[Data Schema by Lucid Charts](https://www.lucidchart.com/publicSegments/view/e78b678b-4e07-4a05-ad5e-94c21b488174/image.png)
+* [Data Schema by Lucid Charts](https://www.lucidchart.com/publicSegments/view/e78b678b-4e07-4a05-ad5e-94c21b488174/image.png)
 
 Here are some examples of how the data looks inside the database:
-[Data schema example for user_info collection](/data-schemas/user_info.json)
-[Data schema example for mad_libz_input collection](/data-schemas/mad_libz_input.json)
-[Data schema example for mad_libz_templates collection](/data-schemas/mad_libz_templates.json)
+* [Data schema example for user_info collection](/data-schemas/user_info.json)
+* [Data schema example for mad_libz_input collection](/data-schemas/mad_libz_input.json)
+* [Data schema example for mad_libz_templates collection](/data-schemas/mad_libz_templates.json)
 
 The templates collection stays static, and its ID is passed into a user input document once a user has created a mad lib. This template ID being passed in helps to build the form users are redirected to in order to get the relevant text input fields and prompts so that the resulting mad lib is given the most relevant information/words as possible. When a new user signs up/registers to the website with their username and password, a new document storing this data, along with a generated user ID, is inserted into the user info collection. This user ID is also passed into a user input document when the user creates a new mad lib (record). This helps to restrict other users from editing and deleting that mad lib record which they did not create.
 
