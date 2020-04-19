@@ -19,8 +19,8 @@ app.secret_key = os.environ.get('SECRET')
 mongo = PyMongo(app)
 
 
-# Function decorator is used for other functions to check if website visitor is logged in
 def check_logged_in(func):
+    """Check if website visitor is logged in with function decorator"""
     @wraps(func)
     def wrapped_function(*args, **kwargs):
         if 'logged-in' in session:
@@ -29,15 +29,18 @@ def check_logged_in(func):
             return render_template('no-login.html')
     return wrapped_function
 
-# Renders the home.html page
+
 @app.route('/')
 @check_logged_in
 def home():
+    """Render the home.html page"""
     return render_template('home.html', username=session['user-name'])
 
-# Provides paths for accessing the register page and for attempting to register
+
 @app.route('/register', methods=["GET", "POST"])
 def register():
+    """Provide paths for accessing the register page and for
+    attempting to register"""
     if 'user-id' in session:
         return redirect(url_for('home'))
 
@@ -69,7 +72,7 @@ def login():
         return redirect(url_for('home'))
     if request.method == "GET":
         return render_template('login.html')
-    # We know it's a POST request
+    """We know it's a POST request"""
     username = request.form['userid']
     user = mongo.db.user_info.find_one({'username': username})
     if user is None:
@@ -87,36 +90,42 @@ def login():
         return render_template('login.html',
                                error="Incorrect credentials")
 
-# Logs user out
+
 @app.route('/logout')
 @check_logged_in
 def logout():
+    """Log user out"""
     session.pop('logged-in', None)
     session.pop('user-name', None)
     session.pop('user-id', None)
     return redirect(url_for('home'))
 
-# Renders create.html page where users first choose mad lib template to use
+
 @app.route('/create')
 @check_logged_in
 def create():
+    """Render create.html page where users first choose
+    mad lib template to use"""
     return render_template('create.html',
                            skeletons=mongo.db.mad_libz_templates.find())
 
-# Page accessed after choosing theme, where user can give word inputs
+# 
 @app.route('/insert_words', methods=['GET'])
 @check_logged_in
 def insert_words():
+    """Access page after choosing theme,
+    where user can then give word inputs"""
     selected_id = request.args.get('mad_lib')
     mad_lib = mongo.db.mad_libz_templates.find_one(
                                                   {'_id': ObjectId(selected_id)
                                                    })
     return render_template('insert-words.html', mad_lib=mad_lib)
 
-# Adds user input data into the MongoDB database
+
 @app.route('/push_data/<template_id>', methods=['POST'])
 @check_logged_in
 def push_data(template_id):
+    """Add user input data into the MongoDB database"""
     user_input = list(request.form.values())
     inserted_id = mongo.db.mad_libz_input.insert_one({
         "mad_lib_id": ObjectId(template_id),
@@ -126,10 +135,11 @@ def push_data(template_id):
     return redirect(url_for('display_result', inserted_id=inserted_id,
                             skeleton_id=template_id))
 
-# Renders result of chosen theme with user inputs zipped into templates
+
 @app.route('/display_result/<inserted_id>/<skeleton_id>')
 @check_logged_in
 def display_result(inserted_id, skeleton_id):
+    """Render result of chosen theme with user inputs zipped into templates"""
     user_input = mongo.db.mad_libz_input.find_one(
                                             {'_id': ObjectId(inserted_id)})
     if session['user-id'] == user_input['creatorID']:
@@ -151,10 +161,12 @@ def display_result(inserted_id, skeleton_id):
         return render_template('home.html',
                                invalid_user="Sorry, invalid user")
 
-# Renders library.html page, displaying all Mad Libs stored in the database
+
 @app.route('/display_all')
 @check_logged_in
 def display_all():
+    """Render library.html page, displaying all Mad Libs stored in the
+    database"""
     user_inputs = list(mongo.db.mad_libz_input.find())
     for user_input in user_inputs:
         skeleton = mongo.db.mad_libz_templates.find_one(
@@ -174,10 +186,12 @@ def display_all():
     return render_template('library.html', user_inputs=user_inputs,
                            user_input=user_input)
 
-# Renders page where users can change prefilled input fields (prefilled with latest data)
+
 @app.route('/edit/<mad_lib_id>')
 @check_logged_in
 def edit(mad_lib_id):
+    """Render page where users can change prefilled input fields
+    (prefilled with latest data)"""
     user_input = mongo.db.mad_libz_input.find_one(
                                                  {'_id': ObjectId(mad_lib_id)})
     if session['user-id'] == user_input['creatorID']:
@@ -194,10 +208,12 @@ def edit(mad_lib_id):
         return render_template('home.html',
                                invalid_user="Sorry, invalid user")
 
-# Updates data/user input provided on the Mad Lib and redirects to library.html
+
 @app.route('/update/<mad_lib_id>', methods=['POST'])
 @check_logged_in
 def update(mad_lib_id):
+    """Update data/user input provided on the Mad Lib and redirect to
+    library.html with user feedback"""
     user_input = list(request.form.values())
     user = mongo.db.mad_libz_input.find_one(
                                             {'_id': ObjectId(mad_lib_id)})
@@ -212,10 +228,11 @@ def update(mad_lib_id):
         return render_template('home.html',
                                invalid_user="Sorry, invalid user")
 
-# Delete route that removes record from database
+
 @app.route('/delete/<mad_lib_id>')
 @check_logged_in
 def delete(mad_lib_id):
+    """Removes record from database and notify the user"""
     user = mongo.db.mad_libz_input.find_one({'_id': ObjectId(mad_lib_id)})
     if session['user-id'] == user['creatorID']:
         mongo.db.mad_libz_input.remove({'_id': ObjectId(mad_lib_id)})
@@ -226,7 +243,7 @@ def delete(mad_lib_id):
                                invalid_user="Sorry, invalid user")
 
 
-# Defines IP address and PORT of application
+"""Define IP address and PORT of application"""
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
