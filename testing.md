@@ -1,18 +1,19 @@
 # Mad Libz - Testing Details
+[Main README.md file](README.md)
+[View website on Heroku](https://ljungwaldh-milestone-project-3.herokuapp.com/)
 
 ## Automated Testing
 
 ### Validation Services
 The following validation services and linter were used to check the validity of the website code.
 
-- [W3C Markup Validation]( https://validator.w3.org/) was used to validate HTML.
+- [W3C Markup Validation](https://validator.w3.org/) was used to validate HTML.
 	- No issues were found when validating via URI’s. Validating via direct input would’ve not worked since the validator does not register Jinja syntax
 
 - [W3C CSS validation](https://jigsaw.w3.org/css-validator/) was used to validate CSS.
 	- Came across a number of issues that were related to styles that were not recognised by the validator. These styles came from css code I took from Start Bootstrap themes and snippets - majority of these relating to styles for different browsers. Below are visuals of the errors/warnings the validator came across:
 (insert images of CSS errors/warnings)
 - These were fixed by cleaning up the CSS code, removing styles that caused errors/warnings.
-
 
 - [PEP8 validation](http://pep8online.com/) was used to validate the Python code.
 	- Only error found was code in my register function, where I had stated ‘if user == None’, when the right syntax in this case would be ‘ if user is None’. Fixed this promptly after the validator notified me of it
