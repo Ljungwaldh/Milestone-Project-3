@@ -12,7 +12,8 @@ The following validation services and linter were used to check the validity of 
 
 - [W3C CSS validation](https://jigsaw.w3.org/css-validator/) was used to validate CSS.
 	- Came across a number of issues that were related to styles that were not recognised by the validator. These styles came from css code I took from Start Bootstrap themes and snippets - majority of these relating to styles for different browsers. Below are visuals of the errors/warnings the validator came across:
-(insert images of CSS errors/warnings)
+        - [CSS Errors/Warnings 1](https://ibb.co/sJj2LyJ)
+        - [CSS Errors/Warnings 2](https://ibb.co/d48F9cR)
 - These were fixed by cleaning up the CSS code, removing styles that caused errors/warnings.
 
 - [PEP8 validation](http://pep8online.com/) was used to validate the Python code.
@@ -150,7 +151,7 @@ Conducted the same tests on Safari, Firefox and Microsoft Edge as stated above. 
 
 ### Testing for Mobile and Tablet devices
 The same tests were done for smaller devices as were done for desktop (where these tests are described in greater detail. The only extra tests made included focusing on how the scrolling works, and how the pages/content rendered in smaller screen sizes. The only bug identified was related to the footer, where, for some but not all mobile devices, caused user experience issues when engaging with text inputs. The footer, as soon as the user scrolled down the page to the footer, the footer would become sticky, therefore blocking other content on the page. More significantly, as soon as the user wished to start typing into a text input (where there touchscreen keyboard would pop up), the footer would drag itself up to cover over all content below the text input the user was currently engaged with. A snapshot below can describe the issue better:
-(insert mobile image)
+- [Error for certain mobile devices in relation to footer and form filling](https://ibb.co/f82fGd1)
 
 - This could potentially be fixed by using a media query in CSS, adjusting the minimum height of the form container so it can push the footer away from view when the user is trying to type into the text inputs. This min-height style would need to be defined in pixels in order to not disturb the height set for the page container (being min-height 100vh, height 100%)
 
