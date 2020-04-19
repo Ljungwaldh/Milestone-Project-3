@@ -1,7 +1,8 @@
 import os
 import itertools
 from functools import wraps
-from flask import Flask, flash, render_template, session, redirect, request, url_for
+from flask import Flask, flash, render_template, session, redirect, request,\
+                  url_for
 from flask_pymongo import PyMongo
 from passlib.hash import pbkdf2_sha256
 from bson.objectid import ObjectId
