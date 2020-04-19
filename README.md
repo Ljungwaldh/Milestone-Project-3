@@ -356,3 +356,48 @@ SECRET | `<your_secret_key>`
 9. In the "Manual Deployment" section of this page, make sure the master branch is selected and then click "Deploy Branch".
 
 10. The site is now successfully deployed.
+
+## Credits
+
+### Idea Inspiration
+The developer found an article that gave inspiration to pursue a project that would involve creating a Mad Libs generator. Idea 6 of ‘Basic Project Ideas’ in this [article](https://data-flair.training/blogs/python-project-ideas/) inspired the idea
+
+### Content
+
+I used a number of Mad Libs templates to help hard code templates in my database:
+- [Political Speech template](https://www.pinterest.se/pin/341710690461791039/)
+- [Wedding Guest Book Entry](https://www.pinterest.se/pin/581527370611975121/)
+- [Newspaper Article](https://www.pinterest.se/pin/292663675778566922/)
+- [My Trip To Disney World within this PDF link](https://www.it.iitb.ac.in/~vijaya/ssrvm/worksheetscd/getWorksheets.com/Language%20Arts/madlibsdoc.pdf)
+- [Love Poem](https://www.youtube.com/watch?time_continue=94&v=u7g9mRzQLYE&feature=emb_logo). On top of the suggestion for a short template to use, this gave inspiration for how to use Python to code a Mad Libs game, which I could build upon by seeing how I could do this to meet the project requirements.
+
+Information about what Mad Libs is I got from [Wikipedia](https://en.wikipedia.org/wiki/Mad_Libs), a definition I used in the information section of the landing page for non-logged in users/visitors
+
+Inspiration for writing my README.md and testing.md files came from this repository by [AJGreaves on Github](https://github.com/AJGreaves/familyhub), especially in terms of content related to Deployment. I made sure to check the latest documentation concerning how to run the project locally and how to deploy to Heroku in order to ensure I adjusted information to be accurate at the time of writing this README. I would also make sure to give relevant information to how to run this project specifically locally.
+
+### Media
+The following images were used to give life to the website, attempting to have images that would help define the theme of the website:
+- [Photo of Laughing Guy by Luis Quintero on Pexels](https://www.pexels.com/photo/photography-of-laughing-guy-1408196/)
+- [Photo of Laughing Woman by Bran Sodre on Pexels](https://www.pexels.com/photo/photo-of-laughing-woman-while-holding-mug-and-kettle-2167209/)
+- [Photo of Emoji Soft Toys in a tin by Pixabay on Pexels](https://www.pexels.com/photo/box-cheerful-color-cute-207983/)
+- [Photo of neon light with Laugh text by Tim Mossholder on Pexels](https://www.pexels.com/photo/laugh-neon-light-signage-turned-on-1115680/)
+
+### Code
+- [‘One Page Wonder’ Start Bootstrap theme](https://startbootstrap.com/themes/one-page-wonder/) utilized for designing landing page as well as inspiration for general styles for button components, the navbar and containers for images to be circular
+- [‘Start Bootstrap Code Snippet of Login Screen](https://startbootstrap.com/snippets/lo) used for styling pages with forms
+- [Footer from a previous project by the developer](https://github.com/Ljungwaldh/First-Milestone-Project/blob/master/index.html#L332) which was subsequently modified in terms of content to suit the needs of the website
+- [Login and user session system inspired by repository by kevin-ci on Github](https://github.com/kevin-ci/flask-mongo-logins/blob/master/app.py), including function decorator that is applied on relevant routes to check if there is a user who has logged in accessing that route. This also includes how to hash passwords using [Passlib] to ensure stored passwords are encrypted
+- [Comprehensive example .gitignore file](https://github.com/github/gitignore/blob/master/Python.gitignore) used to increase security of my Github repository, suggested by the developer’s mentor Anthony Ngene
+- Method and code for generating Mad lib records provided via tutoring from Kevin Loughrey at Code Institute, helping to build [zip method code](https://github.com/Ljungwaldh/Milestone-Project-3/blob/master/app.py) in the project
+- [Guard clauses used in register and login routes](https://github.com/Ljungwaldh/Milestone-Project-3/blob/master/app.py) in python code implemented as a result from tutoring from Yoni Lavi at Code Institute
+- [W3Schools code](https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_parallax_percent) providing understanding on how best to build a full page background image
+[W3Schools code on maxlength input attribute](https://www.w3schools.com/html/tryit.asp?filename=tryhtml_input_attributes_maxlength) used to give further security to input fields in the website
+
+### Acknowledgements
+- I would like to thank my mentor Anrthony Ngene for providing guidance on building the website while at the same time challenging me to produce the best work possible
+- A huge amount of thanks needs to be reserved for my tutors Kevin Loughrey and Xavier Astor for their patience, great availability and excellent guidance of covering educational material, as well as helping with specific technical/coding questions throughout the project and helping to set roadmaps. These two also provided great suggestions/feedback on what can be improved during the development of the project
+- A special thanks to Yoni Lavi who gave me extra mentorship/tutoring for my project, providing valuable feedback in terms of how to improve the code and website for future development
+
+### Disclaimer
+This project is purely for educational purposes, as part of the developer’s learning through the Full Time program at Code Institute
+
