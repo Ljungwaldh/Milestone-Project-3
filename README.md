@@ -36,13 +36,13 @@ has mainly come from the recent need for people needing new ways to entertain th
 
 ### User Stories
 1. As a new visitor to the website, I want it to be very clear as to what the purpose of the website is
-2. As a user new to the mad lib concept, I want information about this presented early and clearly during the experience
+2. As a new user to the mad lib concept, I want information about this presented early and clearly during the experience
 3. As a new user to the website, I want to be able to get started quickly in creating my own mad lib
-4. As a new user to the website, I want to be able to navigate myself easily to different paets of the website
+4. As a new user to the website, I want to be able to navigate myself easily to different parts of the website
 5. As a new user to the website, I want to be able to easily see previously generated mad lib entries
 6. As a new user/returning to the website, I want to be able to get in touch with the site owner to suggest new themes for the mad lib generator
 7. As a new/returning user to the website, I want to be able to not only read my mad lib entries, but to also be able to edit and delete these if I so please
-8. As a new/returning user, I want to be the only one who can edit and delete my mad lib entries through apporpriate user authentication
+8. As a new/returning user, I want to be the only one who can edit and delete my mad lib entries through appropriate user authentication
 
 ## Design Choices
 My design choices were motivated by wanting to create a website that felt both fun but at the same time give it the look and feel that it would be for adults. I wanted the website to be easy to use and navigate across as well as create positive/humorous experiences for users. The choices I made included the following:
@@ -96,7 +96,6 @@ As a starting point, and perhaps subjective opinion of the developer, the projec
 
 - Footer
 	- A simple footer can be found in all pages, with the website logo text, a disclaimer as to who produced the website, a contact email address, and social media links via clickable icons
-	- The footer is sticky on pages where the user is logged in, which is fixed to the bottom of the page until users scroll all the way up to the top of the page. This is to ensure that users have contact/relevant social media access conveniently at hand at all times
 
 - User feedback
 	- Python logic, along with flask (flash messages), has been implemented to give users a simple text message feedback on the screen when certain scenarios happen. These include:
@@ -259,3 +258,101 @@ This project predominantly uses HTML, CSS and Python programming languages. Whil
  - Majority of focus was placed on creating features that require python, Flask and Jinja, and as a result, has given limited-to-no time for implementing Javascript into the front end
 - Considering the user stories for this website/application, the aim is to have simplicity, and the website provides this. Also, since the target audience and engagement aims to be fun/casual, it isn’t the highest priority that the user interface is of the highest quality in order to induce a positive experience for users. The developer believes that the functionality itself can provide the /funcomedy experience users are looking for
 - the inclusion of Javascript code is not a requirement for this project in terms of the time scope for Code Institute. While it would be beneficial to include Javascript, the developer has chosen to submit it in a state where it would be easy to implement this kind of code in future development
+- According to the [Progressive Enhancement Methodology][] for web design, it is crucial to ensure that one has built a well functioning website in stages, as well as ‘release early, release often’. In accordance to this methodology, I have looked to tackle the first two layers in securing the HTML and CSS setup is functioning well enough so that, if Javascript would be disabled/fail, the fallback version would still fulfill user needs well. This [article][] also describes what websites could still function well without Javascript, potentially hinting that this methodology is done by the top players in social media/ecommerce industries. 
+
+## Testing
+All information about the testing procedures I conducted can be found here in a separate [testing.md file][]
+
+## Deployment
+
+### How to run this project locally
+
+To run this project on your own IDE follow the instructions below:
+
+Ensure you have the following tools: 
+- An IDE such as [Visual Studio Code](https://code.visualstudio.com/)
+
+In addition, you’ll need to install the following on your machine:
+- [PIP](https://pip.pypa.io/en/stable/installing/)
+- [Python 3](https://www.python.org/downloads/)
+- [Git](https://gist.github.com/derhuerst/1b15ff4652a867391f03)
+- An account at [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) or MongoDB running locally on your machine. 
+    - How to set up your Mongo Atlas account [here](https://docs.atlas.mongodb.com/).
+
+### Instructions
+1. Save a copy of the github repository located at https://github.com/Ljungwaldh/Milestone-Project-3 by clicking the "download zip" button at the top of the page and extracting the zip file to your chosen folder. If you have Git installed on your system, you can clone the repository with the following command.
+```
+git clone https://github.com/Ljungwaldh/Milestone-Project-3
+```
+
+2. If possible open a terminal session in the unzip folder or cd to the correct location.
+
+3. A virtual environment is recommended for the Python interpreter, I’d recommend using Python’s built in virtual environment. Enter the command:
+```
+python3 -m .venv venv
+```  
+_NOTE: Your Python command may differ, such as python or py_
+
+4. Activate the .venv with the command:
+```
+.venv\Scripts\activate 
+```
+**Note**: This command may differ depending on your operating system, please check the [Python Documentation on virtual environments](https://docs.python.org/3/tutorial/venv.html) for further instructions.
+
+4. If needed, Upgrade pip locally with
+```
+pip install --upgrade pip.
+```
+
+5. Install all required modules with the command 
+```
+pip -r requirements.txt.
+```
+
+6. In your local IDE create a file called `.flaskenv`.
+
+7. Inside the .flaskenv file, create a SECRET variable and a MONGO_URI to link to your own database. Please make sure to call your database `mad_libz`, with 3 collections called `user_info`, `mad_libz_templates` and `mad_libz_input`. You will find example json structures for these collections in the [schemas]() folder.
+
+8. You can now run the application with the command
+```
+python app.py
+```
+**Note**: this can vary depending on the IDE you use, so it could be python3 instead
+
+9. You can visit the website at `http://127.0.0.1:5000`
+
+## Heroku Deployment
+
+To deploy Mad Libz to heroku, follow these steps:
+
+1. Create a `requirements.txt` file using the terminal command `pip freeze > requirements.txt`. Depending on IDE, you might use `pip3 freeze > requirements.txt` instead
+
+2. Create a `Procfile` with the terminal command `echo web: python app.py > Procfile`.
+
+3. `git add` and `git commit` the new requirements and Procfile and then `git push` the project to GitHub.
+
+3. Create a new app on the [Heroku website](https://dashboard.heroku.com/apps) by clicking the "New" button in your dashboard. Give it a name and set the region to Europe.
+
+4. From the heroku dashboard of your newly created application, click on "Deploy" > "Deployment method" and select GitHub.
+
+5. Confirm the linking of the heroku app to the correct GitHub repository.
+
+6. In the heroku dashboard for the application, click on "Settings" > "Reveal Config Vars".
+
+7. Set the following config vars:
+
+| Key | Value |
+ --- | ---
+DEBUG | FALSE
+IP | 0.0.0.0
+MONGO_URI | `mongodb+srv://<username>:<password>@<cluster_name>-qtxun.mongodb.net/<database_name>?retryWrites=true&w=majority`
+PORT | 5000
+SECRET | `<your_secret_key>`
+
+- To get your MONGO_URI read the MongoDB Atlas documentation [here](https://docs.atlas.mongodb.com/)
+
+8. In the heroku dashboard, click "Deploy".
+
+9. In the "Manual Deployment" section of this page, make sure the master branch is selected and then click "Deploy Branch".
+
+10. The site is now successfully deployed.
